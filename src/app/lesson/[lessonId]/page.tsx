@@ -66,31 +66,34 @@ export default function LessonPage() {
       } else {
         completeLesson()
       }
-    }, 2000)
+    }, 1500) // Reduced delay to 1.5 seconds
   }
 
   const completeLesson = () => {
     if (!lesson || !user) return
 
-    const heartsLost = mistakes
-    const updatedProgress = updateProgressAfterLesson(lesson.id, lesson.topicId, xpEarned, heartsLost)
+    // Show the last answer feedback briefly before showing completion
+    setTimeout(() => {
+      const heartsLost = mistakes
+      const updatedProgress = updateProgressAfterLesson(lesson.id, lesson.topicId, xpEarned, heartsLost)
 
-    if (updatedProgress) {
-      setHearts(updatedProgress.hearts)
-    }
+      if (updatedProgress) {
+        setHearts(updatedProgress.hearts)
+      }
 
-    // Save lesson attempt
-    saveLessonAttempt({
-      lessonId: lesson.id,
-      userId: user.id,
-      score: Math.round((xpEarned / lesson.totalXp) * 100),
-      xpEarned,
-      heartsLost,
-      completedAt: new Date().toISOString(),
-      mistakes,
-    })
+      // Save lesson attempt
+      saveLessonAttempt({
+        lessonId: lesson.id,
+        userId: user.id,
+        score: Math.round((xpEarned / lesson.totalXp) * 100),
+        xpEarned,
+        heartsLost,
+        completedAt: new Date().toISOString(),
+        mistakes,
+      })
 
-    setIsComplete(true)
+      setIsComplete(true)
+    }, 1500) // Wait 1.5 seconds to show the last answer feedback
   }
 
   const handleExit = () => {

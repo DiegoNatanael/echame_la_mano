@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
 import type { Exercise } from "@/lib/data/lesson-data"
@@ -16,6 +16,13 @@ export function ExerciseCard({ exercise, onAnswer }: ExerciseCardProps) {
   const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null)
   const [hasAnswered, setHasAnswered] = useState(false)
   const [isCorrect, setIsCorrect] = useState(false)
+
+  // Reset state when exercise prop changes
+  useEffect(() => {
+    setSelectedAnswer(null)
+    setHasAnswered(false)
+    setIsCorrect(false)
+  }, [exercise])
 
   const handleSelectAnswer = (answer: string) => {
     if (hasAnswered) return
@@ -88,7 +95,7 @@ export function ExerciseCard({ exercise, onAnswer }: ExerciseCardProps) {
       </div>
 
       {hasAnswered && (
-        <Card className={cn("p-4", isCorrect ? "bg-green-50 border-green-200" : "bg-red-50 border-red-200")}>
+        <Card className={cn("p-4", isCorrect ? "bg-green-50 border-green-200" : "bg-red-500/20 border-red-200")}>
           <p className={cn("text-center font-semibold", isCorrect ? "text-green-700" : "text-red-700")}>
             {isCorrect
               ? "¡Correcto! +" + exercise.xpReward + " XP"
