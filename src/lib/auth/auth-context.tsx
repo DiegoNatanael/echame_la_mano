@@ -35,19 +35,15 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       return { success: false, error: "La contraseña debe tener al menos 6 caracteres" }
     }
 
-    // Check if user already exists
+    // Create or update user (since we're using localStorage, we just override)
     const existingUser = getUser()
-    if (existingUser && existingUser.email === email) {
-      return { success: false, error: "Este correo ya está registrado" }
-    }
-
-    // Create new user
+    
     const newUser: User = {
-      id: crypto.randomUUID(),
+      id: existingUser?.id || crypto.randomUUID(),
       email,
       name,
-      createdAt: new Date().toISOString(),
-      progress: initializeProgress(crypto.randomUUID()),
+      createdAt: existingUser?.createdAt || new Date().toISOString(),
+      progress: existingUser?.progress || initializeProgress(crypto.randomUUID()),
     }
 
     saveUser(newUser)
@@ -61,14 +57,16 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       return { success: false, error: "Correo y contraseña son requeridos" }
     }
 
-    // Check if user exists
+    // Since we're using localStorage, just return the existing user
     const existingUser = getUser()
-    if (!existingUser || existingUser.email !== email) {
-      return { success: false, error: "Correo o contraseña incorrectos" }
+    if (existingUser) {
+      // Update the user state to trigger re-render
+      setUser(existingUser)
+      return { success: true }
+    } else {
+      // If no user exists, return an error
+      return { success: false, error: "No se encontró un usuario" }
     }
-
-    setUser(existingUser)
-    return { success: true }
   }
 
   const logout = () => {

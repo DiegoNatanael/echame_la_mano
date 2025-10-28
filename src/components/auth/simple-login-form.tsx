@@ -1,7 +1,6 @@
 "use client"
 
 import type React from "react"
-import { useRouter } from "next/navigation"
 
 import { useState } from "react"
 import { Button } from "@/components/ui/button"
@@ -9,34 +8,42 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { useAuth } from "@/lib/auth/auth-context"
+import { getUser, saveUser } from "@/lib/storage/local-storage"
 
-interface SignupFormProps {
-  onSwitchToLogin?: () => void
+interface SimpleLoginFormProps {
+  onSwitchToSignup: () => void
 }
 
-export function SignupForm({ onSwitchToLogin }: SignupFormProps) {
+export function SimpleLoginForm({ onSwitchToSignup }: SimpleLoginFormProps) {
   const [name, setName] = useState("")
   const [error, setError] = useState("")
   const [isLoading, setIsLoading] = useState(false)
-  const { signup } = useAuth()
-  const router = useRouter()
+  const { login, user: currentUser, signup } = useAuth()
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setError("")
     setIsLoading(true)
-    
-    // Generate a temporary email and password for the user
+
+    // Generate a temporary email for the user based on their name
     const tempEmail = `${name.toLowerCase().replace(/\s+/g, '')}@echamela-mano.local`
-    const tempPassword = "temp123456" // Default password for local auth
+    const tempPassword = "temp123456" // Using a default password for local auth
 
-    const result = await signup(tempEmail, tempPassword, name)
-
-    if (!result.success) {
-      setError(result.error || "Error al crear cuenta")
+    // First, try to get any existing user
+    const existingUser = getUser();
+    
+    if (!existingUser) {
+      // If no user exists, create a new one
+      const signupResult = await signup(tempEmail, tempPassword, name);
+      if (!signupResult.success) {
+        setError(signupResult.error || "Error al crear cuenta");
+      }
     } else {
-      // Redirect to profile page after successful signup
-      router.push('/profile')
+      // If a user already exists, just update the name
+      const updatedUser = { ...existingUser, name };
+      saveUser(updatedUser);
+      // Since we can't directly access setUser, we'll trigger a re-render by logging in again
+      await login(tempEmail, tempPassword);
     }
 
     setIsLoading(false)
@@ -44,7 +51,7 @@ export function SignupForm({ onSwitchToLogin }: SignupFormProps) {
 
   return (
     <Card className="w-full max-w-md">
-      <CardHeader className="pb-3">
+      <CardHeader>
         <CardTitle className="text-2xl">Comienza a Aprender</CardTitle>
         <CardDescription>Ingresa tu nombre para comenzar tu viaje con LSM</CardDescription>
       </CardHeader>
@@ -59,23 +66,20 @@ export function SignupForm({ onSwitchToLogin }: SignupFormProps) {
               value={name}
               onChange={(e) => setName(e.target.value)}
               required
-              className="py-5"
             />
           </div>
           {error && <p className="text-sm text-destructive">{error}</p>}
         </CardContent>
-        <CardFooter className="flex flex-col gap-4 pt-4">
+        <CardFooter className="flex flex-col gap-4">
           <Button type="submit" className="w-full" disabled={isLoading}>
-            {isLoading ? "Creando cuenta..." : "Comenzar a Aprender"}
+            {isLoading ? "Iniciando sesión..." : "Comenzar a Aprender"}
           </Button>
-          {onSwitchToLogin && (
-            <p className="text-sm text-muted-foreground text-center">
-              ¿Ya tienes cuenta?{" "}
-              <button type="button" onClick={onSwitchToLogin} className="text-primary hover:underline">
-                Inicia sesión
-              </button>
-            </p>
-          )}
+          <p className="text-sm text-muted-foreground text-center">
+            ¿Ya tienes una cuenta?{" "}
+            <button type="button" onClick={onSwitchToSignup} className="text-primary hover:underline">
+              Inicia sesión
+            </button>
+          </p>
         </CardFooter>
       </form>
     </Card>
