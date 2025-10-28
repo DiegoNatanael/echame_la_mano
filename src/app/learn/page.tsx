@@ -53,7 +53,7 @@ export default function LearnPage() {
       <div className="container mx-auto px-4 py-8">
         <div className="max-w-4xl mx-auto space-y-6">
           <div className="text-center space-y-2">
-            <h1 className="text-4xl font-bold text-balance">Aprende Lengua Maya</h1>
+            <h1 className="text-4xl font-bold text-balance">Aprende Lengua de Señas MX</h1>
             <p className="text-muted-foreground">Selecciona un tema para comenzar tu lección</p>
           </div>
 

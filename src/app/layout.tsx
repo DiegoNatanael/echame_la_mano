@@ -8,7 +8,7 @@ import { Suspense } from "react"
 import "./globals.css"
 
 export const metadata: Metadata = {
-  title: "Aprende Maya",
+  title: "Aprende Lenguaje de señas mexicanas | Échame la mano",
   description: "Aprende Lengua de Señas Mexicana de forma interactiva",
   generator: "v0.app",
 }
