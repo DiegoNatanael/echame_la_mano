@@ -5,7 +5,7 @@ export interface Exercise {
   id: string
   type: ExerciseType
   question: string
-  imageUrl?: string
+  videoUrl?: string // Enlace a la imagen que representa la seña
   options: string[]
   correctAnswer: string
   xpReward: number
@@ -49,8 +49,10 @@ export const topics: Topic[] = [
         {
           id: `greetings-${i + 1}-ex1`,
           type: "multiple-choice" as ExerciseType,
+          // Pregunta corregida para identificar la seña
           question: '¿Qué palabra representa la siguiente seña?',
-          imageUrl: `https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHb614k6L-CH76jzrsO-__h9SYJbqTZCdwcEdpJB-kOYZHPXRNWUXpzQ_oHAY459SYSv7JjBtpH8p9na73j23UnVzsLSVOraY2ZxMaiMqA3p5bd7Ub7eU8ajhp74c7meCf_YisVtB0=`,
+          // Enlace de imagen para "Hola" en LSM
+          videoUrl: `/placeholder.svg?height=300&width=400&query=LSM+sign+for+hello+image`,
           options: ["Hola", "Adiós", "Gracias", "Por favor"],
           correctAnswer: "Hola",
           xpReward: 10,
@@ -58,8 +60,10 @@ export const topics: Topic[] = [
         {
           id: `greetings-${i + 1}-ex2`,
           type: "video-match" as ExerciseType,
-          question: 'Selecciona la seña correcta para "Buenos días"',
-          imageUrl: `/placeholder.svg?height=300&width=400&query=LSM+sign+for+good+morning`,
+          // Pregunta corregida para identificar la seña
+          question: '¿Qué palabra representa la siguiente seña?',
+          // Enlace de imagen para "Buenos días" en LSM
+          videoUrl: `/placeholder.svg?height=300&width=400&query=LSM+sign+for+good+morning+image`,
           options: ["Buenos días", "Buenas tardes", "Buenas noches", "Hasta luego"],
           correctAnswer: "Buenos días",
           xpReward: 10,
@@ -67,8 +71,10 @@ export const topics: Topic[] = [
         {
           id: `greetings-${i + 1}-ex3`,
           type: "multiple-choice" as ExerciseType,
-          question: '¿Cómo se dice "Adiós" en LSM?',
-          imageUrl: `/placeholder.svg?height=300&width=400&query=LSM+sign+for+goodbye`,
+          // Pregunta corregida para identificar la seña
+          question: '¿Qué palabra representa la siguiente seña?',
+          // Enlace de imagen para "Adiós" en LSM
+          videoUrl: `/placeholder.svg?height=300&width=400&query=LSM+sign+for+goodbye+image`,
           options: ["Adiós", "Hola", "Hasta pronto", "Nos vemos"],
           correctAnswer: "Adiós",
           xpReward: 10,
@@ -76,8 +82,10 @@ export const topics: Topic[] = [
         {
           id: `greetings-${i + 1}-ex4`,
           type: "video-match" as ExerciseType,
-          question: 'Identifica la seña para "¿Cómo estás?"',
-          imageUrl: `/placeholder.svg?height=300&width=400&query=LSM+sign+for+how+are+you`,
+          // Pregunta corregida para identificar la seña
+          question: '¿Qué frase representa la siguiente seña?',
+          // Enlace de imagen para "¿Cómo estás?" en LSM
+          videoUrl: `/placeholder.svg?height=300&width=400&query=LSM+sign+for+how+are+you+image`,
           options: ["¿Cómo estás?", "¿Qué tal?", "Bien", "Mal"],
           correctAnswer: "¿Cómo estás?",
           xpReward: 10,
@@ -85,8 +93,10 @@ export const topics: Topic[] = [
         {
           id: `greetings-${i + 1}-ex5`,
           type: "multiple-choice" as ExerciseType,
-          question: 'Selecciona "Gracias"',
-          imageUrl: `/placeholder.svg?height=300&width=400&query=LSM+sign+for+thank+you`,
+          // Pregunta corregida para identificar la seña
+          question: '¿Qué palabra representa la siguiente seña?',
+          // Enlace de imagen para "Gracias" en LSM
+          videoUrl: `/placeholder.svg?height=300&width=400&query=LSM+sign+for+thank+you+image`,
           options: ["Gracias", "De nada", "Por favor", "Perdón"],
           correctAnswer: "Gracias",
           xpReward: 10,
@@ -111,8 +121,10 @@ export const topics: Topic[] = [
         {
           id: `family-${i + 1}-ex1`,
           type: "multiple-choice" as ExerciseType,
-          question: '¿Qué palabra representa la siguiente seña?',
-          imageUrl: `https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQF_5af-4JIFjZnNXlaGWly96jCDC8Wo7HZn68NMysRn6JmHlE2BDEoVuYwjzmg6GhaIWs5i2dkmfRfIOsRx76P6hMenOiSl94MxeYZKrbH80JXW4vbnvo7Bx7fTxIj_hGjhf6zdpSY=`,
+          // Pregunta corregida para identificar la seña
+          question: '¿Qué miembro de la familia representa la seña?',
+          // Enlace de imagen para "Mamá" en LSM
+          videoUrl: `/placeholder.svg?height=300&width=400&query=LSM+sign+for+mother+image`,
           options: ["Mamá", "Papá", "Hermano", "Hermana"],
           correctAnswer: "Mamá",
           xpReward: 10,
@@ -120,8 +132,10 @@ export const topics: Topic[] = [
         {
           id: `family-${i + 1}-ex2`,
           type: "video-match" as ExerciseType,
-          question: 'Selecciona "Papá"',
-          imageUrl: `/placeholder.svg?height=300&width=400&query=LSM+sign+for+father`,
+          // Pregunta corregida para identificar la seña
+          question: '¿Qué miembro de la familia representa la seña?',
+          // Enlace de imagen para "Papá" en LSM
+          videoUrl: `/placeholder.svg?height=300&width=400&query=LSM+sign+for+father+image`,
           options: ["Papá", "Mamá", "Abuelo", "Tío"],
           correctAnswer: "Papá",
           xpReward: 10,
@@ -129,8 +143,10 @@ export const topics: Topic[] = [
         {
           id: `family-${i + 1}-ex3`,
           type: "multiple-choice" as ExerciseType,
-          question: 'Identifica "Hermano"',
-          imageUrl: `/placeholder.svg?height=300&width=400&query=LSM+sign+for+brother`,
+          // Pregunta corregida para identificar la seña
+          question: '¿Qué miembro de la familia representa la seña?',
+          // Enlace de imagen para "Hermano" en LSM
+          videoUrl: `/placeholder.svg?height=300&width=400&query=LSM+sign+for+brother+image`,
           options: ["Hermano", "Hermana", "Primo", "Sobrino"],
           correctAnswer: "Hermano",
           xpReward: 10,
@@ -138,8 +154,10 @@ export const topics: Topic[] = [
         {
           id: `family-${i + 1}-ex4`,
           type: "video-match" as ExerciseType,
-          question: '¿Cómo se dice "Abuela"?',
-          imageUrl: `/placeholder.svg?height=300&width=400&query=LSM+sign+for+grandmother`,
+          // Pregunta corregida para identificar la seña
+          question: '¿Qué miembro de la familia representa la seña?',
+          // Enlace de imagen para "Abuela" en LSM
+          videoUrl: `/placeholder.svg?height=300&width=400&query=LSM+sign+for+grandmother+image`,
           options: ["Abuela", "Abuelo", "Mamá", "Tía"],
           correctAnswer: "Abuela",
           xpReward: 10,
@@ -147,8 +165,10 @@ export const topics: Topic[] = [
         {
           id: `family-${i + 1}-ex5`,
           type: "multiple-choice" as ExerciseType,
-          question: 'Selecciona "Hijo"',
-          imageUrl: `/placeholder.svg?height=300&width=400&query=LSM+sign+for+son`,
+          // Pregunta corregida para identificar la seña
+          question: '¿Qué miembro de la familia representa la seña?',
+          // Enlace de imagen para "Hijo" en LSM
+          videoUrl: `/placeholder.svg?height=300&width=400&query=LSM+sign+for+son+image`,
           options: ["Hijo", "Hija", "Nieto", "Sobrino"],
           correctAnswer: "Hijo",
           xpReward: 10,
@@ -173,8 +193,10 @@ export const topics: Topic[] = [
         {
           id: `numbers-${i + 1}-ex1`,
           type: "multiple-choice" as ExerciseType,
+          // Pregunta corregida para identificar la seña
           question: '¿Qué número representa la siguiente seña?',
-          imageUrl: `https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGhFTOEbmYfonwyaeOMJGONlGB66V-riulyqWBP6pO-AKbvCn_EVIEo-MV2mYow6a_G4jUIytQaslVMivJxHAGaGPo9LjvXbThqtDw2tfwtlFmmd56Eo20_B8Ou-cM5Ud5kc2GafBNchliOLWk6DdpeWtnT9KJXxX0rI6zBAXMQjS9AS3b2W6A=`,
+          // Enlace de imagen para "1" en LSM
+          videoUrl: `/placeholder.svg?height=300&width=400&query=LSM+sign+for+number+1+image`,
           options: ["1", "2", "3", "4"],
           correctAnswer: "1",
           xpReward: 10,
@@ -182,8 +204,10 @@ export const topics: Topic[] = [
         {
           id: `numbers-${i + 1}-ex2`,
           type: "video-match" as ExerciseType,
-          question: "Selecciona el número 5",
-          imageUrl: `/placeholder.svg?height=300&width=400&query=LSM+sign+for+number+5`,
+          // Pregunta corregida para identificar la seña
+          question: '¿Qué número representa la siguiente seña?',
+          // Enlace de imagen para "5" en LSM
+          videoUrl: `/placeholder.svg?height=300&width=400&query=LSM+sign+for+number+5+image`,
           options: ["5", "6", "7", "8"],
           correctAnswer: "5",
           xpReward: 10,
@@ -191,8 +215,10 @@ export const topics: Topic[] = [
         {
           id: `numbers-${i + 1}-ex3`,
           type: "multiple-choice" as ExerciseType,
-          question: "Identifica el número 10",
-          imageUrl: `/placeholder.svg?height=300&width=400&query=LSM+sign+for+number+10`,
+          // Pregunta corregida para identificar la seña
+          question: '¿Qué número representa la siguiente seña?',
+          // Enlace de imagen para "10" en LSM
+          videoUrl: `/placeholder.svg?height=300&width=400&query=LSM+sign+for+number+10+image`,
           options: ["10", "20", "30", "40"],
           correctAnswer: "10",
           xpReward: 10,
@@ -200,8 +226,10 @@ export const topics: Topic[] = [
         {
           id: `numbers-${i + 1}-ex4`,
           type: "video-match" as ExerciseType,
-          question: "¿Qué número es?",
-          imageUrl: `/placeholder.svg?height=300&width=400&query=LSM+sign+for+number+15`,
+          // Pregunta corregida para identificar la seña
+          question: '¿Qué número representa la siguiente seña?',
+          // Enlace de imagen para "15" en LSM
+          videoUrl: `/placeholder.svg?height=300&width=400&query=LSM+sign+for+number+15+image`,
           options: ["15", "25", "35", "45"],
           correctAnswer: "15",
           xpReward: 10,
@@ -209,8 +237,10 @@ export const topics: Topic[] = [
         {
           id: `numbers-${i + 1}-ex5`,
           type: "multiple-choice" as ExerciseType,
-          question: "Selecciona 100",
-          imageUrl: `/placeholder.svg?height=300&width=400&query=LSM+sign+for+number+100`,
+          // Pregunta corregida para identificar la seña
+          question: '¿Qué número representa la siguiente seña?',
+          // Enlace de imagen para "100" en LSM
+          videoUrl: `/placeholder.svg?height=300&width=400&query=LSM+sign+for+number+100+image`,
           options: ["100", "200", "300", "400"],
           correctAnswer: "100",
           xpReward: 10,
@@ -235,8 +265,10 @@ export const topics: Topic[] = [
         {
           id: `colors-${i + 1}-ex1`,
           type: "multiple-choice" as ExerciseType,
+          // Pregunta corregida para identificar la seña
           question: '¿Qué color representa la siguiente seña?',
-          imageUrl: `https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEp9NXsKTmpuTRnbPBNAh8aGqygGAX4Fxv8717BNvSaL8vF3Ed5vsr0a7pP3VkTBpuSFkME4Ckgl48ag5ePfVWb862ajIRfU7FLhynGiX0FSfQ6qvYKUVVfx0pZhGA3EEqNUooXnA==`,
+          // Enlace de imagen para "Rojo" en LSM
+          videoUrl: `/placeholder.svg?height=300&width=400&query=LSM+sign+for+red+color+image`,
           options: ["Rojo", "Azul", "Verde", "Amarillo"],
           correctAnswer: "Rojo",
           xpReward: 10,
@@ -244,8 +276,10 @@ export const topics: Topic[] = [
         {
           id: `colors-${i + 1}-ex2`,
           type: "video-match" as ExerciseType,
-          question: 'Selecciona "Azul"',
-          imageUrl: `/placeholder.svg?height=300&width=400&query=LSM+sign+for+blue+color`,
+          // Pregunta corregida para identificar la seña
+          question: '¿Qué color representa la siguiente seña?',
+          // Enlace de imagen para "Azul" en LSM
+          videoUrl: `/placeholder.svg?height=300&width=400&query=LSM+sign+for+blue+color+image`,
           options: ["Azul", "Verde", "Morado", "Rosa"],
           correctAnswer: "Azul",
           xpReward: 10,
@@ -253,8 +287,10 @@ export const topics: Topic[] = [
         {
           id: `colors-${i + 1}-ex3`,
           type: "multiple-choice" as ExerciseType,
-          question: 'Identifica "Verde"',
-          imageUrl: `/placeholder.svg?height=300&width=400&query=LSM+sign+for+green+color`,
+          // Pregunta corregida para identificar la seña
+          question: '¿Qué color representa la siguiente seña?',
+          // Enlace de imagen para "Verde" en LSM
+          videoUrl: `/placeholder.svg?height=300&width=400&query=LSM+sign+for+green+color+image`,
           options: ["Verde", "Amarillo", "Naranja", "Café"],
           correctAnswer: "Verde",
           xpReward: 10,
@@ -262,8 +298,10 @@ export const topics: Topic[] = [
         {
           id: `colors-${i + 1}-ex4`,
           type: "video-match" as ExerciseType,
-          question: "¿Qué color es?",
-          imageUrl: `/placeholder.svg?height=300&width=400&query=LSM+sign+for+yellow+color`,
+          // Pregunta corregida para identificar la seña
+          question: '¿Qué color representa la siguiente seña?',
+          // Enlace de imagen para "Amarillo" en LSM
+          videoUrl: `/placeholder.svg?height=300&width=400&query=LSM+sign+for+yellow+color+image`,
           options: ["Amarillo", "Blanco", "Negro", "Gris"],
           correctAnswer: "Amarillo",
           xpReward: 10,
@@ -271,8 +309,10 @@ export const topics: Topic[] = [
         {
           id: `colors-${i + 1}-ex5`,
           type: "multiple-choice" as ExerciseType,
-          question: 'Selecciona "Negro"',
-          imageUrl: `/placeholder.svg?height=300&width=400&query=LSM+sign+for+black+color`,
+          // Pregunta corregida para identificar la seña
+          question: '¿Qué color representa la siguiente seña?',
+          // Enlace de imagen para "Negro" en LSM
+          videoUrl: `/placeholder.svg?height=300&width=400&query=LSM+sign+for+black+color+image`,
           options: ["Negro", "Blanco", "Gris", "Café"],
           correctAnswer: "Negro",
           xpReward: 10,
@@ -297,8 +337,10 @@ export const topics: Topic[] = [
         {
           id: `food-${i + 1}-ex1`,
           type: "multiple-choice" as ExerciseType,
-          question: '¿Qué alimento representa la siguiente seña?',
-          imageUrl: `https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHmBVtSvQgnBTlfTUWBL-qqjDUPnzbheBovYZ-KzvovvuEBCuY7psyIn_ohYzLi6rJhz3wRm-zaxv7Z7U7DkW-qxJ4xZZEvMrmI7xYHQ4XkVW5eqPiVmjmwO98l-caMXMX5BaeeWg==`,
+          // Pregunta corregida para identificar la seña
+          question: '¿Qué alimento/bebida representa la siguiente seña?',
+          // Enlace de imagen para "Agua" en LSM
+          videoUrl: `/placeholder.svg?height=300&width=400&query=LSM+sign+for+water+image`,
           options: ["Agua", "Leche", "Jugo", "Refresco"],
           correctAnswer: "Agua",
           xpReward: 10,
@@ -306,8 +348,10 @@ export const topics: Topic[] = [
         {
           id: `food-${i + 1}-ex2`,
           type: "video-match" as ExerciseType,
-          question: 'Selecciona "Pan"',
-          imageUrl: `/placeholder.svg?height=300&width=400&query=LSM+sign+for+bread`,
+          // Pregunta corregida para identificar la seña
+          question: '¿Qué alimento representa la siguiente seña?',
+          // Enlace de imagen para "Pan" en LSM
+          videoUrl: `/placeholder.svg?height=300&width=400&query=LSM+sign+for+bread+image`,
           options: ["Pan", "Tortilla", "Arroz", "Pasta"],
           correctAnswer: "Pan",
           xpReward: 10,
@@ -315,8 +359,10 @@ export const topics: Topic[] = [
         {
           id: `food-${i + 1}-ex3`,
           type: "multiple-choice" as ExerciseType,
-          question: 'Identifica "Manzana"',
-          imageUrl: `/placeholder.svg?height=300&width=400&query=LSM+sign+for+apple`,
+          // Pregunta corregida para identificar la seña
+          question: '¿Qué fruta representa la siguiente seña?',
+          // Enlace de imagen para "Manzana" en LSM
+          videoUrl: `/placeholder.svg?height=300&width=400&query=LSM+sign+for+apple+image`,
           options: ["Manzana", "Naranja", "Plátano", "Uva"],
           correctAnswer: "Manzana",
           xpReward: 10,
@@ -324,8 +370,10 @@ export const topics: Topic[] = [
         {
           id: `food-${i + 1}-ex4`,
           type: "video-match" as ExerciseType,
-          question: "¿Qué es esto?",
-          imageUrl: `/placeholder.svg?height=300&width=400&query=LSM+sign+for+chicken`,
+          // Pregunta corregida para identificar la seña
+          question: '¿Qué tipo de carne representa la siguiente seña?',
+          // Enlace de imagen para "Pollo" en LSM
+          videoUrl: `/placeholder.svg?height=300&width=400&query=LSM+sign+for+chicken+image`,
           options: ["Pollo", "Carne", "Pescado", "Huevo"],
           correctAnswer: "Pollo",
           xpReward: 10,
@@ -333,8 +381,10 @@ export const topics: Topic[] = [
         {
           id: `food-${i + 1}-ex5`,
           type: "multiple-choice" as ExerciseType,
-          question: 'Selecciona "Café"',
-          imageUrl: `/placeholder.svg?height=300&width=400&query=LSM+sign+for+coffee`,
+          // Pregunta corregida para identificar la seña
+          question: '¿Qué bebida representa la siguiente seña?',
+          // Enlace de imagen para "Café" en LSM
+          videoUrl: `/placeholder.svg?height=300&width=400&query=LSM+sign+for+coffee+image`,
           options: ["Café", "Té", "Chocolate", "Atole"],
           correctAnswer: "Café",
           xpReward: 10,
@@ -359,8 +409,10 @@ export const topics: Topic[] = [
         {
           id: `animals-${i + 1}-ex1`,
           type: "multiple-choice" as ExerciseType,
+          // Pregunta corregida para identificar la seña
           question: '¿Qué animal representa la siguiente seña?',
-          imageUrl: `https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHWSrgGWpuJOZbjmPqMYLhmOP-69YTyCfxFaDYLDdYeCm0zCsduvZuiDgTnHl-CeM6QxTVHUl7TIKJAFwxdlH1ZzOHn0w1FhYWSy6vLDj0Eu9eR7W9gH1FydFq_08Gbch35JpWcrA=`,
+          // Enlace de imagen para "Perro" en LSM
+          videoUrl: `/placeholder.svg?height=300&width=400&query=LSM+sign+for+dog+image`,
           options: ["Perro", "Gato", "Pájaro", "Pez"],
           correctAnswer: "Perro",
           xpReward: 10,
@@ -368,8 +420,10 @@ export const topics: Topic[] = [
         {
           id: `animals-${i + 1}-ex2`,
           type: "video-match" as ExerciseType,
-          question: 'Selecciona "Gato"',
-          imageUrl: `/placeholder.svg?height=300&width=400&query=LSM+sign+for+cat`,
+          // Pregunta corregida para identificar la seña
+          question: '¿Qué animal representa la siguiente seña?',
+          // Enlace de imagen para "Gato" en LSM
+          videoUrl: `/placeholder.svg?height=300&width=400&query=LSM+sign+for+cat+image`,
           options: ["Gato", "Perro", "Conejo", "Ratón"],
           correctAnswer: "Gato",
           xpReward: 10,
@@ -377,8 +431,10 @@ export const topics: Topic[] = [
         {
           id: `animals-${i + 1}-ex3`,
           type: "multiple-choice" as ExerciseType,
-          question: 'Identifica "Caballo"',
-          imageUrl: `/placeholder.svg?height=300&width=400&query=LSM+sign+for+horse`,
+          // Pregunta corregida para identificar la seña
+          question: '¿Qué animal representa la siguiente seña?',
+          // Enlace de imagen para "Caballo" en LSM
+          videoUrl: `/placeholder.svg?height=300&width=400&query=LSM+sign+for+horse+image`,
           options: ["Caballo", "Vaca", "Cerdo", "Oveja"],
           correctAnswer: "Caballo",
           xpReward: 10,
@@ -386,8 +442,10 @@ export const topics: Topic[] = [
         {
           id: `animals-${i + 1}-ex4`,
           type: "video-match" as ExerciseType,
-          question: "¿Qué animal es?",
-          imageUrl: `/placeholder.svg?height=300&width=400&query=LSM+sign+for+bird`,
+          // Pregunta corregida para identificar la seña
+          question: '¿Qué animal representa la siguiente seña?',
+          // Enlace de imagen para "Pájaro" en LSM
+          videoUrl: `/placeholder.svg?height=300&width=400&query=LSM+sign+for+bird+image`,
           options: ["Pájaro", "Mariposa", "Abeja", "Mosca"],
           correctAnswer: "Pájaro",
           xpReward: 10,
@@ -395,8 +453,10 @@ export const topics: Topic[] = [
         {
           id: `animals-${i + 1}-ex5`,
           type: "multiple-choice" as ExerciseType,
-          question: 'Selecciona "Elefante"',
-          imageUrl: `/placeholder.svg?height=300&width=400&query=LSM+sign+for+elephant`,
+          // Pregunta corregida para identificar la seña
+          question: '¿Qué animal representa la siguiente seña?',
+          // Enlace de imagen para "Elefante" en LSM
+          videoUrl: `/placeholder.svg?height=300&width=400&query=LSM+sign+for+elephant+image`,
           options: ["Elefante", "León", "Tigre", "Oso"],
           correctAnswer: "Elefante",
           xpReward: 10,
@@ -421,8 +481,10 @@ export const topics: Topic[] = [
         {
           id: `emotions-${i + 1}-ex1`,
           type: "multiple-choice" as ExerciseType,
+          // Pregunta corregida para identificar la seña
           question: '¿Qué emoción representa la siguiente seña?',
-          imageUrl: `https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFHb7mRk56PsrUmt5_jpmFtItdP4uU46Vc8eb255tBUGHFL7AnxLZDxC0ggLxKVKy49qMXM4wttjuNfxVU8TOaNENLc_syn9-HBtz2awI4RUs6kWEUritbAqBHmpJBSxEPoidOhc8E=`,
+          // Enlace de imagen para "Feliz" en LSM
+          videoUrl: `/placeholder.svg?height=300&width=400&query=LSM+sign+for+happy+image`,
           options: ["Feliz", "Triste", "Enojado", "Asustado"],
           correctAnswer: "Feliz",
           xpReward: 10,
@@ -430,8 +492,10 @@ export const topics: Topic[] = [
         {
           id: `emotions-${i + 1}-ex2`,
           type: "video-match" as ExerciseType,
-          question: 'Selecciona "Triste"',
-          imageUrl: `/placeholder.svg?height=300&width=400&query=LSM+sign+for+sad`,
+          // Pregunta corregida para identificar la seña
+          question: '¿Qué emoción representa la siguiente seña?',
+          // Enlace de imagen para "Triste" en LSM
+          videoUrl: `/placeholder.svg?height=300&width=400&query=LSM+sign+for+sad+image`,
           options: ["Triste", "Feliz", "Cansado", "Aburrido"],
           correctAnswer: "Triste",
           xpReward: 10,
@@ -439,8 +503,10 @@ export const topics: Topic[] = [
         {
           id: `emotions-${i + 1}-ex3`,
           type: "multiple-choice" as ExerciseType,
-          question: 'Identifica "Enojado"',
-          imageUrl: `/placeholder.svg?height=300&width=400&query=LSM+sign+for+angry`,
+          // Pregunta corregida para identificar la seña
+          question: '¿Qué emoción representa la siguiente seña?',
+          // Enlace de imagen para "Enojado" en LSM
+          videoUrl: `/placeholder.svg?height=300&width=400&query=LSM+sign+for+angry+image`,
           options: ["Enojado", "Frustrado", "Molesto", "Irritado"],
           correctAnswer: "Enojado",
           xpReward: 10,
@@ -448,8 +514,10 @@ export const topics: Topic[] = [
         {
           id: `emotions-${i + 1}-ex4`,
           type: "video-match" as ExerciseType,
-          question: "¿Qué emoción es?",
-          imageUrl: `/placeholder.svg?height=300&width=400&query=LSM+sign+for+surprised`,
+          // Pregunta corregida para identificar la seña
+          question: '¿Qué emoción representa la siguiente seña?',
+          // Enlace de imagen para "Sorprendido" en LSM
+          videoUrl: `/placeholder.svg?height=300&width=400&query=LSM+sign+for+surprised+image`,
           options: ["Sorprendido", "Confundido", "Preocupado", "Nervioso"],
           correctAnswer: "Sorprendido",
           xpReward: 10,
@@ -457,8 +525,10 @@ export const topics: Topic[] = [
         {
           id: `emotions-${i + 1}-ex5`,
           type: "multiple-choice" as ExerciseType,
-          question: 'Selecciona "Amor"',
-          imageUrl: `/placeholder.svg?height=300&width=400&query=LSM+sign+for+love`,
+          // Pregunta corregida para identificar la seña
+          question: '¿Qué concepto representa la siguiente seña?',
+          // Enlace de imagen para "Amor" en LSM
+          videoUrl: `/placeholder.svg?height=300&width=400&query=LSM+sign+for+love+image`,
           options: ["Amor", "Cariño", "Amistad", "Respeto"],
           correctAnswer: "Amor",
           xpReward: 10,
@@ -483,8 +553,10 @@ export const topics: Topic[] = [
         {
           id: `places-${i + 1}-ex1`,
           type: "multiple-choice" as ExerciseType,
+          // Pregunta corregida para identificar la seña
           question: '¿Qué lugar representa la siguiente seña?',
-          imageUrl: `https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHD8xGx8SEuy24YGy8xjEDJ7HMHnNXfKYexP_k_tr95VEpKAS-ROCgoiC67HHVLlpQM3ROvmNJSv285tnUJPefrc_6BGhQoHGib8-0s2icdTKz5ZAqr6TGmyaz0r14-BnM=`,
+          // Enlace de imagen para "Casa" en LSM
+          videoUrl: `/placeholder.svg?height=300&width=400&query=LSM+sign+for+house+image`,
           options: ["Casa", "Escuela", "Trabajo", "Hospital"],
           correctAnswer: "Casa",
           xpReward: 10,
@@ -492,8 +564,10 @@ export const topics: Topic[] = [
         {
           id: `places-${i + 1}-ex2`,
           type: "video-match" as ExerciseType,
-          question: 'Selecciona "Escuela"',
-          imageUrl: `/placeholder.svg?height=300&width=400&query=LSM+sign+for+school`,
+          // Pregunta corregida para identificar la seña
+          question: '¿Qué lugar representa la siguiente seña?',
+          // Enlace de imagen para "Escuela" en LSM
+          videoUrl: `/placeholder.svg?height=300&width=400&query=LSM+sign+for+school+image`,
           options: ["Escuela", "Universidad", "Biblioteca", "Museo"],
           correctAnswer: "Escuela",
           xpReward: 10,
@@ -501,8 +575,10 @@ export const topics: Topic[] = [
         {
           id: `places-${i + 1}-ex3`,
           type: "multiple-choice" as ExerciseType,
-          question: 'Identifica "Hospital"',
-          imageUrl: `/placeholder.svg?height=300&width=400&query=LSM+sign+for+hospital`,
+          // Pregunta corregida para identificar la seña
+          question: '¿Qué lugar representa la siguiente seña?',
+          // Enlace de imagen para "Hospital" en LSM
+          videoUrl: `/placeholder.svg?height=300&width=400&query=LSM+sign+for+hospital+image`,
           options: ["Hospital", "Clínica", "Farmacia", "Doctor"],
           correctAnswer: "Hospital",
           xpReward: 10,
@@ -510,8 +586,10 @@ export const topics: Topic[] = [
         {
           id: `places-${i + 1}-ex4`,
           type: "video-match" as ExerciseType,
-          question: "¿Qué lugar es?",
-          imageUrl: `/placeholder.svg?height=300&width=400&query=LSM+sign+for+store`,
+          // Pregunta corregida para identificar la seña
+          question: '¿Qué lugar representa la siguiente seña?',
+          // Enlace de imagen para "Tienda" en LSM
+          videoUrl: `/placeholder.svg?height=300&width=400&query=LSM+sign+for+store+image`,
           options: ["Tienda", "Mercado", "Centro comercial", "Supermercado"],
           correctAnswer: "Tienda",
           xpReward: 10,
@@ -519,8 +597,10 @@ export const topics: Topic[] = [
         {
           id: `places-${i + 1}-ex5`,
           type: "multiple-choice" as ExerciseType,
-          question: 'Selecciona "Parque"',
-          imageUrl: `/placeholder.svg?height=300&width=400&query=LSM+sign+for+park`,
+          // Pregunta corregida para identificar la seña
+          question: '¿Qué lugar representa la siguiente seña?',
+          // Enlace de imagen para "Parque" en LSM
+          videoUrl: `/placeholder.svg?height=300&width=400&query=LSM+sign+for+park+image`,
           options: ["Parque", "Jardín", "Plaza", "Bosque"],
           correctAnswer: "Parque",
           xpReward: 10,
@@ -545,8 +625,10 @@ export const topics: Topic[] = [
         {
           id: `time-${i + 1}-ex1`,
           type: "multiple-choice" as ExerciseType,
-          question: '¿Qué día representa la siguiente seña?',
-          imageUrl: `https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQG7H0-_V-D4Xgp9ZkmihrBkQN5sW9qZLi1N9hhWzuhRpghbYxKMGaSzaCDhWcNbBMhqRYFVl6EODDRilVOLWDY9NJDFDZbCeKmgg-CZcEvK-oixEnlExDNI4RgqUryg0kgewaswpt8=`,
+          // Pregunta corregida para identificar la seña
+          question: '¿Qué día de la semana representa la siguiente seña?',
+          // Enlace de imagen para "Lunes" en LSM
+          videoUrl: `/placeholder.svg?height=300&width=400&query=LSM+sign+for+monday+image`,
           options: ["Lunes", "Martes", "Miércoles", "Jueves"],
           correctAnswer: "Lunes",
           xpReward: 10,
@@ -554,8 +636,10 @@ export const topics: Topic[] = [
         {
           id: `time-${i + 1}-ex2`,
           type: "video-match" as ExerciseType,
-          question: 'Selecciona "Hoy"',
-          imageUrl: `/placeholder.svg?height=300&width=400&query=LSM+sign+for+today`,
+          // Pregunta corregida para identificar la seña
+          question: '¿Qué concepto de tiempo representa la siguiente seña?',
+          // Enlace de imagen para "Hoy" en LSM
+          videoUrl: `/placeholder.svg?height=300&width=400&query=LSM+sign+for+today+image`,
           options: ["Hoy", "Ayer", "Mañana", "Ahora"],
           correctAnswer: "Hoy",
           xpReward: 10,
@@ -563,16 +647,21 @@ export const topics: Topic[] = [
         {
           id: `time-${i + 1}-ex3`,
           type: "multiple-choice" as ExerciseType,
-          question: 'Identifica "Enero"',
-          imageUrl: `/placeholder.svg?height=300&width=400&query=LSM+sign+for+january`,
+          // Pregunta corregida para identificar la seña
+          question: '¿Qué mes representa la siguiente seña?',
+          // Enlace de imagen para "Enero" en LSM
+          videoUrl: `/placeholder.svg?height=300&width=400&query=LSM+sign+for+january+image`,
           options: ["Enero", "Febrero", "Marzo", "Abril"],
           correctAnswer: "Enero",
           xpReward: 10,
         },
-        {id: `time-${i + 1}-ex4`,
+        {
+          id: `time-${i + 1}-ex4`,
           type: "video-match" as ExerciseType,
-          question: "¿Qué hora es?",
-          imageUrl: `/placeholder.svg?height=300&width=400&query=LSM+sign+for+morning`,
+          // Pregunta corregida para identificar la seña
+          question: '¿Qué momento del día representa la siguiente seña?',
+          // Enlace de imagen para "Mañana" en LSM
+          videoUrl: `/placeholder.svg?height=300&width=400&query=LSM+sign+for+morning+image`,
           options: ["Mañana", "Tarde", "Noche", "Mediodía"],
           correctAnswer: "Mañana",
           xpReward: 10,
@@ -580,8 +669,10 @@ export const topics: Topic[] = [
         {
           id: `time-${i + 1}-ex5`,
           type: "multiple-choice" as ExerciseType,
-          question: 'Selecciona "Semana"',
-          imageUrl: `/placeholder.svg?height=300&width=400&query=LSM+sign+for+week`,
+          // Pregunta corregida para identificar la seña
+          question: '¿Qué periodo de tiempo representa la siguiente seña?',
+          // Enlace de imagen para "Semana" en LSM
+          videoUrl: `/placeholder.svg?height=300&width=400&query=LSM+sign+for+week+image`,
           options: ["Semana", "Mes", "Año", "Día"],
           correctAnswer: "Semana",
           xpReward: 10,
@@ -606,8 +697,10 @@ export const topics: Topic[] = [
         {
           id: `questions-${i + 1}-ex1`,
           type: "multiple-choice" as ExerciseType,
+          // Pregunta corregida para identificar la seña
           question: '¿Qué pregunta representa la siguiente seña?',
-          imageUrl: `https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFQ6rjl3RKzz8uVGCgFhSl6gUVxamyalY2U14paehYx1PNODCnuOUi1F0rgxHX1Qb12IJ5fbLL7norRZlKB-dzmK_pTh6gG3YxAm1WWxJREb_WoQItYZTj9qPN54nU0NXNlzefRLI8=`,
+          // Enlace de imagen para "¿Qué?" en LSM
+          videoUrl: `/placeholder.svg?height=300&width=400&query=LSM+sign+for+what+image`,
           options: ["¿Qué?", "¿Quién?", "¿Dónde?", "¿Cuándo?"],
           correctAnswer: "¿Qué?",
           xpReward: 10,
@@ -615,8 +708,10 @@ export const topics: Topic[] = [
         {
           id: `questions-${i + 1}-ex2`,
           type: "video-match" as ExerciseType,
-          question: 'Selecciona "¿Dónde?"',
-          imageUrl: `/placeholder.svg?height=300&width=400&query=LSM+sign+for+where`,
+          // Pregunta corregida para identificar la seña
+          question: '¿Qué pregunta representa la siguiente seña?',
+          // Enlace de imagen para "¿Dónde?" en LSM
+          videoUrl: `/placeholder.svg?height=300&width=400&query=LSM+sign+for+where+image`,
           options: ["¿Dónde?", "¿Cuándo?", "¿Cómo?", "¿Por qué?"],
           correctAnswer: "¿Dónde?",
           xpReward: 10,
@@ -624,8 +719,10 @@ export const topics: Topic[] = [
         {
           id: `questions-${i + 1}-ex3`,
           type: "multiple-choice" as ExerciseType,
-          question: 'Identifica "¿Quién?"',
-          imageUrl: `/placeholder.svg?height=300&width=400&query=LSM+sign+for+who`,
+          // Pregunta corregida para identificar la seña
+          question: '¿Qué pregunta representa la siguiente seña?',
+          // Enlace de imagen para "¿Quién?" en LSM
+          videoUrl: `/placeholder.svg?height=300&width=400&query=LSM+sign+for+who+image`,
           options: ["¿Quién?", "¿Qué?", "¿Cuál?", "¿Cuánto?"],
           correctAnswer: "¿Quién?",
           xpReward: 10,
@@ -633,8 +730,10 @@ export const topics: Topic[] = [
         {
           id: `questions-${i + 1}-ex4`,
           type: "video-match" as ExerciseType,
-          question: "¿Qué pregunta es?",
-          imageUrl: `/placeholder.svg?height=300&width=400&query=LSM+sign+for+why`,
+          // Pregunta corregida para identificar la seña
+          question: '¿Qué pregunta representa la siguiente seña?',
+          // Enlace de imagen para "¿Por qué?" en LSM
+          videoUrl: `/placeholder.svg?height=300&width=400&query=LSM+sign+for+why+image`,
           options: ["¿Por qué?", "¿Para qué?", "¿Cómo?", "¿Cuándo?"],
           correctAnswer: "¿Por qué?",
           xpReward: 10,
@@ -642,8 +741,10 @@ export const topics: Topic[] = [
         {
           id: `questions-${i + 1}-ex5`,
           type: "multiple-choice" as ExerciseType,
-          question: 'Selecciona "¿Cuánto?"',
-          imageUrl: `/placeholder.svg?height=300&width=400&query=LSM+sign+for+how+much`,
+          // Pregunta corregida para identificar la seña
+          question: '¿Qué pregunta representa la siguiente seña?',
+          // Enlace de imagen para "¿Cuánto?" en LSM
+          videoUrl: `/placeholder.svg?height=300&width=400&query=LSM+sign+for+how+much+image`,
           options: ["¿Cuánto?", "¿Cuántos?", "¿Cuál?", "¿Qué?"],
           correctAnswer: "¿Cuánto?",
           xpReward: 10,
