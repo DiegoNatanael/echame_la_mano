@@ -12,6 +12,32 @@ interface ExerciseCardProps {
   onAnswer: (isCorrect: boolean, selectedAnswer: string) => void
 }
 
+// Helper function to determine if a URL is a YouTube URL
+const isYouTubeUrl = (url: string): boolean => {
+  return /\b(youtube\.com|youtu\.be)\b/.test(url);
+};
+
+// Helper function to convert YouTube URL to embed URL
+const convertToEmbedUrl = (url: string): string => {
+  if (url.includes('youtube.com/embed/')) {
+    return url; // Already an embed URL
+  }
+  
+  if (url.includes('youtu.be/')) {
+    // Convert youtu.be URLs to embed format
+    const videoId = url.split('youtu.be/')[1].split(/[?&]/)[0];
+    return `https://www.youtube.com/embed/${videoId}`;
+  }
+  
+  if (url.includes('youtube.com/watch')) {
+    // Convert youtube.com/watch URLs to embed format
+    const videoId = url.split('v=')[1].split(/[&?]/)[0];
+    return `https://www.youtube.com/embed/${videoId}`;
+  }
+  
+  return url; // Return as is if not a YouTube URL
+};
+
 export function ExerciseCard({ exercise, onAnswer }: ExerciseCardProps) {
   const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null)
   const [hasAnswered, setHasAnswered] = useState(false)
@@ -62,13 +88,26 @@ export function ExerciseCard({ exercise, onAnswer }: ExerciseCardProps) {
         {exercise.videoUrl && (
           <Card className="overflow-hidden bg-muted">
             <div className="relative aspect-video w-full">
-              <Image
-                src={exercise.videoUrl || "/placeholder.svg"}
-                alt="Demostración de seña LSM"
-                fill
-                className="object-cover"
-                priority
-              />
+              {isYouTubeUrl(exercise.videoUrl) ? (
+                // Render YouTube embed
+                <iframe
+                  src={convertToEmbedUrl(exercise.videoUrl)}
+                  title="Demostración de seña LSM"
+                  className="w-full h-full"
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                />
+              ) : (
+                // Render image for non-YouTube URLs
+                <Image
+                  src={exercise.videoUrl || "/placeholder.svg"}
+                  alt="Demostración de seña LSM"
+                  fill
+                  className="object-cover"
+                  priority
+                />
+              )}
             </div>
           </Card>
         )}
