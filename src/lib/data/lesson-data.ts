@@ -35,7 +35,7 @@ export const topics: Topic[] = [
   {
     id: "greetings",
     title: "Saludos",
-    description: "Aprende a saludar en Maya",
+    description: "Aprende a saludar en LSM",
     icon: "👋",
     order: 1,
     lessons: Array.from({ length: 10 }, (_, i) => ({
@@ -49,8 +49,10 @@ export const topics: Topic[] = [
         {
           id: `greetings-${i + 1}-ex1`,
           type: "multiple-choice" as ExerciseType,
-          question: '¿Qué seña representa "Hola"?',
-          videoUrl: `/placeholder.svg?height=300&width=400&query=LSM+sign+for+hello`,
+          // PREGUNTA CORREGIDA
+          question: '¿Qué palabra representa la siguiente seña?',
+          // Seña LSM "Hola" (YouTube)
+          videoUrl: `https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHb614k6L-CH76jzrsO-__h9SYJbqTZCdwcEdpJB-kOYZHPXRNWUXpzQ_oHAY459SYSv7JjBtpH8p9na73j23UnVzsLSVOraY2ZxMaiMqA3p5bd7Ub7eU8ajhp74c7meCf_YisVtB0=`,
           options: ["Hola", "Adiós", "Gracias", "Por favor"],
           correctAnswer: "Hola",
           xpReward: 10,
@@ -111,8 +113,10 @@ export const topics: Topic[] = [
         {
           id: `family-${i + 1}-ex1`,
           type: "multiple-choice" as ExerciseType,
-          question: '¿Qué seña representa "Mamá"?',
-          videoUrl: `/placeholder.svg?height=300&width=400&query=LSM+sign+for+mother`,
+          // PREGUNTA CORREGIDA
+          question: '¿Qué palabra representa la siguiente seña?',
+          // Seña LSM "Mamá" (YouTube)
+          videoUrl: `https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQF_5af-4JIFjZnNXlaGWly96jCDC8Wo7HZn68NMysRn6JmHlE2BDEoVuYwjzmg6GhaIWs5i2dkmfRfIOsRx76P6hMenOiSl94MxeYZKrbH80JXW4vbnvo7Bx7fTxIj_hGjhf6zdpSY=`,
           options: ["Mamá", "Papá", "Hermano", "Hermana"],
           correctAnswer: "Mamá",
           xpReward: 10,
@@ -173,8 +177,10 @@ export const topics: Topic[] = [
         {
           id: `numbers-${i + 1}-ex1`,
           type: "multiple-choice" as ExerciseType,
-          question: "¿Qué número es este?",
-          videoUrl: `/placeholder.svg?height=300&width=400&query=LSM+sign+for+number+1`,
+          // PREGUNTA CORREGIDA
+          question: '¿Qué número representa la siguiente seña?',
+          // Seña LSM "1" (Scribd - Láminas Números)
+          videoUrl: `https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGhFTOEbmYfonwyaeOMJGONlGB66V-riulyqWBP6pO-AKbvCn_EVIEo-MV2mYow6a_G4jUIytQaslVMivJxHAGaGPo9LjvXbThqtDw2tfwtlFmmd56Eo20_B8Ou-cM5Ud5kc2GafBNchliOLWk6DdpeWtnT9KJXxX0rI6zBAXMQjS9AS3b2W6A=`,
           options: ["1", "2", "3", "4"],
           correctAnswer: "1",
           xpReward: 10,
@@ -235,8 +241,10 @@ export const topics: Topic[] = [
         {
           id: `colors-${i + 1}-ex1`,
           type: "multiple-choice" as ExerciseType,
-          question: "¿Qué color es este?",
-          videoUrl: `/placeholder.svg?height=300&width=400&query=LSM+sign+for+red+color`,
+          // PREGUNTA CORREGIDA
+          question: '¿Qué color representa la siguiente seña?',
+          // Seña LSM "Rojo" (YouTube)
+          videoUrl: `https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEp9NXsKTmpuTRnbPBNAh8aGqygGAX4Fxv8717BNvSaL8vF3Ed5vsr0a7pP3VkTBpuSFkME4Ckgl48ag5ePfVWb862ajIRfU7FLhynGiX0FSfQ6qvYKUVVfx0pZhGA3EEqNUooXnA==`,
           options: ["Rojo", "Azul", "Verde", "Amarillo"],
           correctAnswer: "Rojo",
           xpReward: 10,
@@ -297,8 +305,10 @@ export const topics: Topic[] = [
         {
           id: `food-${i + 1}-ex1`,
           type: "multiple-choice" as ExerciseType,
-          question: "¿Qué comida es esta?",
-          videoUrl: `/placeholder.svg?height=300&width=400&query=LSM+sign+for+water`,
+          // PREGUNTA CORREGIDA
+          question: '¿Qué alimento representa la siguiente seña?',
+          // Seña LSM "Agua" (YouTube)
+          videoUrl: `https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHmBVtSvQgnBTlfTUWBL-qqjDUPnzbheBovYZ-KzvovvuEBCuY7psyIn_ohYzLi6rJhz3wRm-zaxv7Z7U7DkW-qxJ4xZZEvMrmI7xYHQ4XkVW5eqPiVmjmwO98l-caMXMX5BaeeWg==`,
           options: ["Agua", "Leche", "Jugo", "Refresco"],
           correctAnswer: "Agua",
           xpReward: 10,
@@ -359,8 +369,10 @@ export const topics: Topic[] = [
         {
           id: `animals-${i + 1}-ex1`,
           type: "multiple-choice" as ExerciseType,
-          question: "¿Qué animal es?",
-          videoUrl: `/placeholder.svg?height=300&width=400&query=LSM+sign+for+dog`,
+          // PREGUNTA CORREGIDA
+          question: '¿Qué animal representa la siguiente seña?',
+          // Seña LSM "Perro" (YouTube)
+          videoUrl: `https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHWSrgGWpuJOZbjmPqMYLhmOP-69YTyCfxFaDYLDdYeCm0zCsduvZuiDgTnHl-CeM6QxTVHUl7TIKJAFwxdlH1ZzOHn0w1FhYWSy6vLDj0Eu9eR7W9gH1FydFq_08Gbch35JpWcrA=`,
           options: ["Perro", "Gato", "Pájaro", "Pez"],
           correctAnswer: "Perro",
           xpReward: 10,
@@ -421,8 +433,10 @@ export const topics: Topic[] = [
         {
           id: `emotions-${i + 1}-ex1`,
           type: "multiple-choice" as ExerciseType,
-          question: "¿Qué emoción es?",
-          videoUrl: `/placeholder.svg?height=300&width=400&query=LSM+sign+for+happy`,
+          // PREGUNTA CORREGIDA
+          question: '¿Qué emoción representa la siguiente seña?',
+          // Seña LSM "Feliz" (YouTube)
+          videoUrl: `https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFHb7mRk56PsrUmt5_jpmFtItdP4uU46Vc8eb255tBUGHFL7AnxLZDxC0ggLxKVKy49qMXM4wttjuNfxVU8TOaNENLc_syn9-HBtz2awI4RUs6kWEUritbAqBHmpJBSxEPoidOhc8E=`,
           options: ["Feliz", "Triste", "Enojado", "Asustado"],
           correctAnswer: "Feliz",
           xpReward: 10,
@@ -483,8 +497,10 @@ export const topics: Topic[] = [
         {
           id: `places-${i + 1}-ex1`,
           type: "multiple-choice" as ExerciseType,
-          question: "¿Qué lugar es?",
-          videoUrl: `/placeholder.svg?height=300&width=400&query=LSM+sign+for+house`,
+          // PREGUNTA CORREGIDA
+          question: '¿Qué lugar representa la siguiente seña?',
+          // Seña LSM "Casa" (Wikisigns)
+          videoUrl: `https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHD8xGx8SEuy24YGy8xjEDJ7HMHnNXfKYexP_k_tr95VEpKAS-ROCgoiC67HHVLlpQM3ROvmNJSv285tnUJPefrc_6BGhQoHGib8-0s2icdTKz5ZAqr6TGmyaz0r14-BnM=`,
           options: ["Casa", "Escuela", "Trabajo", "Hospital"],
           correctAnswer: "Casa",
           xpReward: 10,
@@ -545,8 +561,10 @@ export const topics: Topic[] = [
         {
           id: `time-${i + 1}-ex1`,
           type: "multiple-choice" as ExerciseType,
-          question: "¿Qué día es?",
-          videoUrl: `/placeholder.svg?height=300&width=400&query=LSM+sign+for+monday`,
+          // PREGUNTA CORREGIDA
+          question: '¿Qué día representa la siguiente seña?',
+          // Seña LSM "Lunes" (YouTube)
+          videoUrl: `https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQG7H0-_V-D4Xgp9ZkmihrBkQN5sW9qZLi1N9hhWzuhRpghbYxKMGaSzaCDhWcNbBMhqRYFVl6EODDRilVOLWDY9NJDFDZbCeKmgg-CZcEvK-oixEnlExDNI4RgqUryg0kgewaswpt8=`,
           options: ["Lunes", "Martes", "Miércoles", "Jueves"],
           correctAnswer: "Lunes",
           xpReward: 10,
@@ -607,8 +625,10 @@ export const topics: Topic[] = [
         {
           id: `questions-${i + 1}-ex1`,
           type: "multiple-choice" as ExerciseType,
-          question: "¿Qué pregunta es?",
-          videoUrl: `/placeholder.svg?height=300&width=400&query=LSM+sign+for+what`,
+          // PREGUNTA CORREGIDA
+          question: '¿Qué pregunta representa la siguiente seña?',
+          // Seña LSM "¿Qué?" (YouTube)
+          videoUrl: `https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFQ6rjl3RKzz8uVGCgFhSl6gUVxamyalY2U14paehYx1PNODCnuOUi1F0rgxHX1Qb12IJ5fbLL7norRZlKB-dzmK_pTh6gG3YxAm1WWxJREb_WoQItYZTj9qPN54nU0NXNlzefRLI8=`,
           options: ["¿Qué?", "¿Quién?", "¿Dónde?", "¿Cuándo?"],
           correctAnswer: "¿Qué?",
           xpReward: 10,
