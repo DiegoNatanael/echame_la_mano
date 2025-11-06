@@ -38,13 +38,107 @@ export function saveProgress(progress: UserProgress): void {
 export function getProgress(): UserProgress | null {
   if (typeof window !== "undefined") {
     const data = localStorage.getItem(STORAGE_KEYS.PROGRESS)
-    return data ? JSON.parse(data) : null
+    if (data) {
+      const progress = JSON.parse(data) as UserProgress;
+      
+      // Migration: Check if progress data is using old structure (10 lessons)
+      // and update it to new structure (1 lesson per topic)
+      const needsMigration = Object.values(progress.topicProgress).some(
+        (topicProgress: any) => topicProgress.totalLessons === 10
+      );
+      
+      if (needsMigration) {
+        // Update all topics to have 1 total lesson
+        const updatedTopicProgress = {
+          greetings: { 
+            completedLessons: Math.min(1, progress.topicProgress.greetings?.completedLessons || 0), 
+            totalLessons: 1, 
+            isUnlocked: progress.topicProgress.greetings?.isUnlocked || true 
+          },
+          family: { 
+            completedLessons: Math.min(1, progress.topicProgress.family?.completedLessons || 0), 
+            totalLessons: 1, 
+            isUnlocked: progress.topicProgress.family?.isUnlocked || false 
+          },
+          numbers: { 
+            completedLessons: Math.min(1, progress.topicProgress.numbers?.completedLessons || 0), 
+            totalLessons: 1, 
+            isUnlocked: progress.topicProgress.numbers?.isUnlocked || false 
+          },
+          colors: { 
+            completedLessons: Math.min(1, progress.topicProgress.colors?.completedLessons || 0), 
+            totalLessons: 1, 
+            isUnlocked: progress.topicProgress.colors?.isUnlocked || false 
+          },
+          food: { 
+            completedLessons: Math.min(1, progress.topicProgress.food?.completedLessons || 0), 
+            totalLessons: 1, 
+            isUnlocked: progress.topicProgress.food?.isUnlocked || false 
+          },
+          animals: { 
+            completedLessons: Math.min(1, progress.topicProgress.animals?.completedLessons || 0), 
+            totalLessons: 1, 
+            isUnlocked: progress.topicProgress.animals?.isUnlocked || false 
+          },
+          emotions: { 
+            completedLessons: Math.min(1, progress.topicProgress.emotions?.completedLessons || 0), 
+            totalLessons: 1, 
+            isUnlocked: progress.topicProgress.emotions?.isUnlocked || false 
+          },
+          places: { 
+            completedLessons: Math.min(1, progress.topicProgress.places?.completedLessons || 0), 
+            totalLessons: 1, 
+            isUnlocked: progress.topicProgress.places?.isUnlocked || false 
+          },
+          time: { 
+            completedLessons: Math.min(1, progress.topicProgress.time?.completedLessons || 0), 
+            totalLessons: 1, 
+            isUnlocked: progress.topicProgress.time?.isUnlocked || false 
+          },
+          questions: { 
+            completedLessons: Math.min(1, progress.topicProgress.questions?.completedLessons || 0), 
+            totalLessons: 1, 
+            isUnlocked: progress.topicProgress.questions?.isUnlocked || false 
+          },
+        };
+        
+        progress.topicProgress = updatedTopicProgress;
+        saveProgress(progress);
+      }
+      
+      return progress;
+    }
+    return null;
   }
-  return null
+  return null;
 }
 
 // Initialize default progress for new users
 export function initializeProgress(userId: string): UserProgress {
+  const defaultProgress: UserProgress = {
+    userId,
+    completedLessons: [],
+    currentStreak: 0,
+    longestStreak: 0,
+    totalXp: 0,
+    hearts: 5,
+    lastActiveDate: new Date().toISOString(),
+    topicProgress: {
+      greetings: { completedLessons: 0, totalLessons: 1, isUnlocked: true },
+      family: { completedLessons: 0, totalLessons: 1, isUnlocked: false },
+      numbers: { completedLessons: 0, totalLessons: 1, isUnlocked: false },
+      colors: { completedLessons: 0, totalLessons: 1, isUnlocked: false },
+      food: { completedLessons: 0, totalLessons: 1, isUnlocked: false },
+      animals: { completedLessons: 0, totalLessons: 1, isUnlocked: false },
+      emotions: { completedLessons: 0, totalLessons: 1, isUnlocked: false },
+      places: { completedLessons: 0, totalLessons: 1, isUnlocked: false },
+      time: { completedLessons: 0, totalLessons: 1, isUnlocked: false },
+      questions: { completedLessons: 0, totalLessons: 1, isUnlocked: false },
+    },
+  }
+  
+  // Original implementation with 10 lessons per topic - keep for future use
+  /*
   const defaultProgress: UserProgress = {
     userId,
     completedLessons: [],
@@ -66,6 +160,8 @@ export function initializeProgress(userId: string): UserProgress {
       questions: { completedLessons: 0, totalLessons: 10, isUnlocked: false },
     },
   }
+  */
+  
   saveProgress(defaultProgress)
   return defaultProgress
 }
@@ -113,6 +209,12 @@ export function updateProgressAfterLesson(
     progress.topicProgress[topicId].completedLessons = progress.completedLessons.filter((id) =>
       id.startsWith(topicId),
     ).length
+    
+    // Ensure completedLessons doesn't exceed totalLessons (should be max 1 now)
+    progress.topicProgress[topicId].completedLessons = Math.min(
+      progress.topicProgress[topicId].completedLessons,
+      progress.topicProgress[topicId].totalLessons
+    );
 
     // Unlock next topic if current topic is completed
     const currentTopicCompleted =

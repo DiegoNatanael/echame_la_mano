@@ -49,10 +49,27 @@ export function TopicCard({ topic, isUnlocked, completedLessons, totalLessons, o
             </span>
           </div>
 
-          <div className="progress-indicator">
-            <div style={{ width: `${progress}%` }} />
+          <div className="w-full bg-primary/20 h-2 rounded-full overflow-hidden">
+            <div 
+              className="h-full bg-primary rounded-full transition-all duration-300"
+              style={{ width: `${progress}%` }}
+            />
           </div>
 
+          {isUnlocked && (
+            <div className="flex flex-col gap-3 mt-4">
+              <Button
+                variant="default"
+                size="lg"
+                className="w-full font-medium py-6 text-lg"
+                onClick={() => onSelectLesson(topic.lessons[0].id)}
+              >
+                Iniciar Lección
+              </Button>
+            </div>
+          )}
+
+          {/* Original implementation for multiple lessons - keep for future use
           {isUnlocked && (
             <div className="grid grid-cols-5 gap-3 mt-4">
               {topic.lessons.slice(0, 10).map((lesson, index) => {
@@ -79,6 +96,7 @@ export function TopicCard({ topic, isUnlocked, completedLessons, totalLessons, o
               })}
             </div>
           )}
+          */}
         </div>
       </CardContent>
     </Card>

@@ -83,6 +83,7 @@ export function AchievementsPreview({ totalXp, completedLessons, currentStreak }
                 )}
               </div>
               <p className="text-xs font-medium text-center">{achievement.title}</p>
+              <p className="text-xs text-muted-foreground text-center">{achievement.description}</p>
             </div>
           ))}
         </div>

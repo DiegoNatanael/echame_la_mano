@@ -38,7 +38,7 @@ export const topics: Topic[] = [
     description: "Aprende a saludar en LSM",
     icon: "👋",
     order: 1,
-    lessons: Array.from({ length: 10 }, (_, i) => ({
+    lessons: Array.from({ length: 1 }, (_, i) => ({
       id: `greetings-${i + 1}`,
       topicId: "greetings",
       lessonNumber: i + 1,
@@ -50,8 +50,7 @@ export const topics: Topic[] = [
           id: `greetings-${i + 1}-ex1`,
           type: "multiple-choice" as ExerciseType,
           question: '¿Qué palabra representa la siguiente seña?',
-          // VIDEO REAL: Seña "Hola" (YouTube Embed)
-          videoUrl: `https://youtu.be/lhrN2iaPdaM`,
+          videoUrl: `/assets/saludos/hola_imagen.jpeg`,
           options: ["Hola", "Adiós", "Gracias", "Por favor"],
           correctAnswer: "Hola",
           xpReward: 10,
@@ -60,7 +59,7 @@ export const topics: Topic[] = [
           id: `greetings-${i + 1}-ex2`,
           type: "video-match" as ExerciseType,
           question: '¿Qué palabra representa la siguiente seña?',
-          videoUrl: `https://youtu.be/bY3jLzcPNNo`,
+          videoUrl: `/assets/saludos/dias_saludos.jpg`,
           options: ["Buenos días", "Buenas tardes", "Buenas noches", "Hasta luego"],
           correctAnswer: "Buenos días",
           xpReward: 10,
@@ -69,7 +68,7 @@ export const topics: Topic[] = [
           id: `greetings-${i + 1}-ex3`,
           type: "multiple-choice" as ExerciseType,
           question: '¿Qué palabra representa la siguiente seña?',
-          videoUrl: `https://youtu.be/aI1ohGAwVHc`,
+          videoUrl: `/assets/saludos/adios_saludos.jpg`,
           options: ["Adiós", "Hola", "Hasta pronto", "Nos vemos"],
           correctAnswer: "Adiós",
           xpReward: 10,
@@ -78,7 +77,7 @@ export const topics: Topic[] = [
           id: `greetings-${i + 1}-ex4`,
           type: "video-match" as ExerciseType,
           question: '¿Qué frase representa la siguiente seña?',
-          videoUrl: `/placeholder.svg?height=300&width=400&query=LSM+sign+for+how+are+you`,
+          videoUrl: `/assets/saludos/comoEstas_Saludos.jpg`,
           options: ["¿Cómo estás?", "¿Qué tal?", "Bien", "Mal"],
           correctAnswer: "¿Cómo estás?",
           xpReward: 10,
@@ -87,7 +86,7 @@ export const topics: Topic[] = [
           id: `greetings-${i + 1}-ex5`,
           type: "multiple-choice" as ExerciseType,
           question: '¿Qué palabra representa la siguiente seña?',
-          videoUrl: `/placeholder.svg?height=300&width=400&query=LSM+sign+for+thank+you`,
+          videoUrl: `/assets/saludos/gracias_Saludos.jpg`,
           options: ["Gracias", "De nada", "Por favor", "Perdón"],
           correctAnswer: "Gracias",
           xpReward: 10,
@@ -101,7 +100,7 @@ export const topics: Topic[] = [
     description: "Señas para miembros de la familia",
     icon: "👨‍👩‍👧‍👦",
     order: 2,
-    lessons: Array.from({ length: 10 }, (_, i) => ({
+    lessons: Array.from({ length: 1 }, (_, i) => ({
       id: `family-${i + 1}`,
       topicId: "family",
       lessonNumber: i + 1,
@@ -132,25 +131,25 @@ export const topics: Topic[] = [
           id: `family-${i + 1}-ex3`,
           type: "multiple-choice" as ExerciseType,
           question: '¿Qué miembro de la familia representa la seña?',
-          videoUrl: `/placeholder.svg?height=300&width=400&query=LSM+sign+for+brother`,
+          videoUrl: `/assets/familia/primo_familia.jpg`,
           options: ["Hermano", "Hermana", "Primo", "Sobrino"],
-          correctAnswer: "Hermano",
+          correctAnswer: "Primo",
           xpReward: 10,
         },
         {
           id: `family-${i + 1}-ex4`,
           type: "video-match" as ExerciseType,
           question: '¿Qué miembro de la familia representa la seña?',
-          videoUrl: `/placeholder.svg?height=300&width=400&query=LSM+sign+for+grandmother`,
+          videoUrl: `/assets/familia/abuelo_familia.jpg`,
           options: ["Abuela", "Abuelo", "Mamá", "Tía"],
-          correctAnswer: "Abuela",
+          correctAnswer: "Abuelo",
           xpReward: 10,
         },
         {
           id: `family-${i + 1}-ex5`,
           type: "multiple-choice" as ExerciseType,
           question: '¿Qué miembro de la familia representa la seña?',
-          videoUrl: `/placeholder.svg?height=300&width=400&query=LSM+sign+for+son`,
+          videoUrl: `/assets/familia/hijo_familia.jpg`,
           options: ["Hijo", "Hija", "Nieto", "Sobrino"],
           correctAnswer: "Hijo",
           xpReward: 10,
@@ -164,7 +163,7 @@ export const topics: Topic[] = [
     description: "Aprende a contar en LSM",
     icon: "🔢",
     order: 3,
-    lessons: Array.from({ length: 10 }, (_, i) => ({
+    lessons: Array.from({ length: 1 }, (_, i) => ({
       id: `numbers-${i + 1}`,
       topicId: "numbers",
       lessonNumber: i + 1,
@@ -227,7 +226,7 @@ export const topics: Topic[] = [
     description: "Señas para colores básicos",
     icon: "🎨",
     order: 4,
-    lessons: Array.from({ length: 10 }, (_, i) => ({
+    lessons: Array.from({ length: 1 }, (_, i) => ({
       id: `colors-${i + 1}`,
       topicId: "colors",
       lessonNumber: i + 1,
@@ -290,7 +289,7 @@ export const topics: Topic[] = [
     description: "Señas para alimentos comunes",
     icon: "🍽️",
     order: 5,
-    lessons: Array.from({ length: 10 }, (_, i) => ({
+    lessons: Array.from({ length: 1 }, (_, i) => ({
       id: `food-${i + 1}`,
       topicId: "food",
       lessonNumber: i + 1,
@@ -353,7 +352,7 @@ export const topics: Topic[] = [
     description: "Señas para animales comunes",
     icon: "🐕",
     order: 6,
-    lessons: Array.from({ length: 10 }, (_, i) => ({
+    lessons: Array.from({ length: 1 }, (_, i) => ({
       id: `animals-${i + 1}`,
       topicId: "animals",
       lessonNumber: i + 1,
@@ -416,7 +415,7 @@ export const topics: Topic[] = [
     description: "Expresa cómo te sientes",
     icon: "😊",
     order: 7,
-    lessons: Array.from({ length: 10 }, (_, i) => ({
+    lessons: Array.from({ length: 1 }, (_, i) => ({
       id: `emotions-${i + 1}`,
       topicId: "emotions",
       lessonNumber: i + 1,
@@ -479,7 +478,7 @@ export const topics: Topic[] = [
     description: "Señas para lugares comunes",
     icon: "🏠",
     order: 8,
-    lessons: Array.from({ length: 10 }, (_, i) => ({
+    lessons: Array.from({ length: 1 }, (_, i) => ({
       id: `places-${i + 1}`,
       topicId: "places",
       lessonNumber: i + 1,
@@ -542,7 +541,7 @@ export const topics: Topic[] = [
     description: "Días, meses y horas",
     icon: "⏰",
     order: 9,
-    lessons: Array.from({ length: 10 }, (_, i) => ({
+    lessons: Array.from({ length: 1 }, (_, i) => ({
       id: `time-${i + 1}`,
       topicId: "time",
       lessonNumber: i + 1,
@@ -605,7 +604,7 @@ export const topics: Topic[] = [
     description: "Aprende a hacer preguntas",
     icon: "❓",
     order: 10,
-    lessons: Array.from({ length: 10 }, (_, i) => ({
+    lessons: Array.from({ length: 1 }, (_, i) => ({
       id: `questions-${i + 1}`,
       topicId: "questions",
       lessonNumber: i + 1,
