@@ -113,7 +113,7 @@ export const topics: Topic[] = [
           type: "multiple-choice" as ExerciseType,
           question: '¿Qué miembro de la familia representa la seña?',
           // VIDEO REAL: Seña "Mamá" (YouTube Embed)
-          videoUrl: `https://www.youtube.com/embed/Y0A-8hJ-F8A`,
+          videoUrl: `/assets/familia/mama_familia.jpg`,
           options: ["Mamá", "Papá", "Hermano", "Hermana"],
           correctAnswer: "Mamá",
           xpReward: 10,
@@ -122,7 +122,7 @@ export const topics: Topic[] = [
           id: `family-${i + 1}-ex2`,
           type: "video-match" as ExerciseType,
           question: '¿Qué miembro de la familia representa la seña?',
-          videoUrl: `/placeholder.svg?height=300&width=400&query=LSM+sign+for+father`,
+          videoUrl: `/assets/familia/papa_familia.jpg`,
           options: ["Papá", "Mamá", "Abuelo", "Tío"],
           correctAnswer: "Papá",
           xpReward: 10,
