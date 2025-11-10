@@ -2,23 +2,21 @@
 
 import { useEffect } from "react"
 import { useRouter } from "next/navigation"
-// import { useAuth } from "@/lib/auth/auth-context"
+import { useAuth } from "@/lib/auth/auth-context"
 
 export default function HomePage() {
-  // const { user, isLoading } = useAuth()
+  const { user, isLoading } = useAuth()
   const router = useRouter()
 
   useEffect(() => {
-    router.push("/learn")
-
-    // if (!isLoading) {
-    //   if (user) {
-    //     router.push("/learn")
-    //   } else {
-    //     router.push("/auth")
-    //   }
-    // }
-  }, [router])
+    if (!isLoading) {
+      if (user) {
+        router.push("/learn")
+      } else {
+        router.push("/auth")
+      }
+    }
+  }, [user, isLoading, router])
 
   return (
     <div className="min-h-screen flex items-center justify-center">

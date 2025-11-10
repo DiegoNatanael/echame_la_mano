@@ -58,6 +58,17 @@ export function TopicCard({ topic, isUnlocked, completedLessons, totalLessons, o
 
           {isUnlocked && (
             <div className="flex flex-col gap-3 mt-4">
+              {/* Topic-specific introduction button */}
+              <Button
+                variant="outline"
+                size="lg"
+                className="w-full font-medium py-4 text-base"
+                onClick={() => onSelectLesson(`intro-${topic.id}`)}
+              >
+                Ver Introducción
+              </Button>
+              
+              {/* Main lesson button */}
               <Button
                 variant="default"
                 size="lg"

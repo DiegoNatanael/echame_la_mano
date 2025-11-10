@@ -2,44 +2,54 @@
 
 import { useEffect, useState } from "react"
 import { useRouter } from "next/navigation"
-// import { useAuth } from "@/lib/auth/auth-context"
+import { useAuth } from "@/lib/auth/auth-context"
 import { getProgress, initializeProgress } from "@/lib/storage/local-storage"
 import type { UserProgress } from "@/lib/types/user"
 import { topics } from "@/lib/data/lesson-data"
+// import { generalIntroductionLessons } from "@/lib/data/introduction-data"
 import { AppHeader } from "@/components/layout/app-header"
 import { TopicCard } from "@/components/learn/topic-card"
 import { QuickStatsBar } from "@/components/learn/quick-stats-bar"
 
 export default function LearnPage() {
-  // const { user, isLoading } = useAuth()
+  const { user, isLoading } = useAuth()
   const router = useRouter()
   const [progress, setProgress] = useState<UserProgress | null>(null)
 
   useEffect(() => {
-    // if (!isLoading && !user) {
-    //   router.push("/auth")
-    //   return
-    // }
-
-    // if (user) {
-    const userProgress = getProgress()
-    if (!userProgress) {
-      // If there's no stored progress (fresh install / guest), initialize a default progress
-      const guestProgress = initializeProgress("guest")
-      setProgress(guestProgress)
+    if (!isLoading && !user) {
+      router.push("/auth")
       return
     }
 
-    setProgress(userProgress)
-    // }
-  }, [router])
+    if (user) {
+      const userProgress = getProgress()
+      if (!userProgress) {
+        // If there's no stored progress (fresh install), initialize progress
+        const initialProgress = initializeProgress(user.id)
+        setProgress(initialProgress)
+        return
+      }
+
+      setProgress(userProgress)
+    }
+  }, [user, isLoading, router])
 
   const handleSelectLesson = (lessonId: string) => {
-    router.push(`/lesson/${lessonId}`)
+    if (lessonId.startsWith('intro-')) {
+      // Handle topic-specific introductions
+      router.push(`/introduction/${lessonId}`)
+    } else {
+      // Handle main lessons
+      router.push(`/lesson/${lessonId}`)
+    }
   }
 
-  // if (isLoading || !user || !progress) {
-  if (!progress) {
+  const handleSelectIntroduction = (lessonId: string) => {
+    router.push(`/introduction/${lessonId}`)
+  }
+
+  if (isLoading || !user || !progress) {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <p>Cargando...</p>
@@ -68,7 +78,7 @@ export default function LearnPage() {
                   topic={topic}
                   isUnlocked={topicProgress?.isUnlocked || false}
                   completedLessons={topicProgress?.completedLessons || 0}
-                  totalLessons={topicProgress?.totalLessons || 10}
+                  totalLessons={topicProgress?.totalLessons || 1}
                   onSelectLesson={handleSelectLesson}
                 />
               )
