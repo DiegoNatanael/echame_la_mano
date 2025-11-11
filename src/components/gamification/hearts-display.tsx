@@ -9,7 +9,7 @@ interface HeartsDisplayProps {
   maxHearts?: number
 }
 
-export function HeartsDisplay({ hearts, maxHearts = 5 }: HeartsDisplayProps) {
+export function HeartsDisplay({ hearts, maxHearts = 10 }: HeartsDisplayProps) {
   const canRefill = hearts < maxHearts
 
   return (

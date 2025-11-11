@@ -121,7 +121,7 @@ export function initializeProgress(userId: string): UserProgress {
     currentStreak: 0,
     longestStreak: 0,
     totalXp: 0,
-    hearts: 5,
+    hearts: 10,
     lastActiveDate: new Date().toISOString(),
     topicProgress: {
       greetings: { completedLessons: 0, totalLessons: 1, isUnlocked: true },
@@ -203,6 +203,23 @@ export function updateProgressAfterLesson(
 
   // Update hearts
   progress.hearts = Math.max(0, progress.hearts - heartsLost)
+  
+  // Check if hearts reached 0 and reset progress if needed
+  if (progress.hearts === 0) {
+    // Reset user progress to initial state
+    const resetProgress = initializeProgress(progress.userId);
+    // Preserve XP earned so far
+    resetProgress.totalXp = progress.totalXp;
+    // Keep the same lesson attempts
+    resetProgress.completedLessons = [];
+    // Reset streak
+    resetProgress.currentStreak = 0;
+    // Give user fresh hearts
+    resetProgress.hearts = 10;
+    
+    saveProgress(resetProgress);
+    return resetProgress;
+  }
 
   // Update topic progress
   if (progress.topicProgress[topicId]) {

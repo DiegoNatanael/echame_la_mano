@@ -45,18 +45,39 @@ export default function LessonPage() {
     const progress = getProgress()
     if (progress) {
       setHearts(progress.hearts)
+      
+      // If user has 0 hearts, redirect to learn page
+      if (progress.hearts === 0) {
+        router.push('/learn');
+        return;
+      }
     }
   }, [lessonId, router])
 
   const handleAnswer = (isCorrect: boolean, selectedAnswer: string) => {
     if (!lesson) return
 
+    let newHearts = hearts;
     if (isCorrect) {
       const exercise = lesson.exercises[currentExerciseIndex]
       setXpEarned((prev) => prev + exercise.xpReward)
     } else {
-      setHearts((prev) => Math.max(0, prev - 1))
+      newHearts = Math.max(0, hearts - 1);
+      setHearts(newHearts);
       setMistakes((prev) => prev + 1)
+    }
+
+    // Check if hearts reached 0, if so, reset progress and redirect
+    if (newHearts === 0) {
+      // Trigger progress reset by calling updateProgressAfterLesson
+      const heartsLost = 1; // Current mistake
+      const updatedProgress = updateProgressAfterLesson(lesson.id, lesson.topicId, xpEarned, heartsLost);
+      
+      if (updatedProgress && updatedProgress.hearts === 5) {
+        // Progress was reset, redirect to learn page
+        router.push('/learn');
+        return;
+      }
     }
 
     // Move to next exercise after a delay
@@ -79,6 +100,13 @@ export default function LessonPage() {
 
       if (updatedProgress) {
         setHearts(updatedProgress.hearts)
+        
+        // Check if progress was reset due to hearts reaching 0
+        if (updatedProgress.hearts === 5 && updatedProgress.completedLessons.length === 0) {
+          // Progress was reset, redirect to learn page
+          router.push('/learn');
+          return;
+        }
       }
 
       // Save lesson attempt
