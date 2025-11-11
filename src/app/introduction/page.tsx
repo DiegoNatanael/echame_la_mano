@@ -47,11 +47,18 @@ export default function IntroductionPage() {
                   <div className="flex-1">
                     <h3 className="text-xl font-semibold mb-1">{lesson.title}</h3>
                     <p className="text-muted-foreground mb-2">{lesson.description}</p>
-                    <div className="flex items-center gap-4 text-sm text-muted-foreground">
-                      <span>{Math.ceil(lesson.totalDuration / 60)} min</span>
-                      <span>•</span>
-                      <span>{lesson.exercises.length} lecciones</span>
-                    </div>
+                    {(() => {
+                      const totalDurationSeconds = lesson.exercises.reduce((sum, ex) => sum + (ex.duration ?? 0), 0)
+                      const minutes = totalDurationSeconds > 0 ? Math.ceil(totalDurationSeconds / 60) : null
+
+                      return (
+                        <div className="flex items-center gap-4 text-sm text-muted-foreground">
+                          {minutes && <span>{minutes} min</span>}
+                          {minutes && <span>•</span>}
+                          <span>{lesson.exercises.length} lecciones</span>
+                        </div>
+                      )
+                    })()}
                   </div>
                 </div>
               </div>
