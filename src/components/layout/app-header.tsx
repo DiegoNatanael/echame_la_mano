@@ -9,6 +9,13 @@ export function AppHeader() {
       <div className="container mx-auto px-4 py-3">
         <div className="flex items-center justify-between">
           <Link href="/learn" className="flex items-center gap-2">
+            <img 
+              src="/assets/echame-la-mano-LOGO.jpg" 
+              alt="Échame la Mano Logo" 
+              width={32} 
+              height={32} 
+              className="rounded-full"
+            />
             <h1 className="text-xl font-bold text-primary">Échame la Mano</h1>
           </Link>
 
