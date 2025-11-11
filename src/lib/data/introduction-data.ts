@@ -31,15 +31,15 @@ export const topicIntroductionLessons: Record<string, IntroductionLesson> = {
     exercises: [
       {
         id: "greetings-intro-1",
-        type: "video" as IntroductionExerciseType,
+        type: "video",
         title: "Importancia de los Saludos en LSM",
-        content: "https://www.youtube.com/embed/YNBeHPcxlR0", 
+        content: "https://www.youtube.com/embed/YNBeHPcxlR0",
         description:
           "Descubre por qué los saludos son una parte esencial de la comunicación en LSM. Aprende cómo un buen saludo establece respeto y conexión visual con la otra persona.",
       },
       {
         id: "greetings-intro-2",
-        type: "text" as IntroductionExerciseType,
+        type: "text",
         title: "Contexto Cultural",
         content:
           "En la comunidad sorda mexicana, los saludos no solo son una cortesía: son una muestra de respeto, reconocimiento y disposición a comunicarse. Al saludar, es fundamental mantener contacto visual y acompañar la seña con una expresión facial cordial. Los saludos pueden variar según la formalidad del entorno o la cercanía entre las personas.",
@@ -48,7 +48,7 @@ export const topicIntroductionLessons: Record<string, IntroductionLesson> = {
       },
       {
         id: "greetings-intro-3",
-        type: "image" as IntroductionExerciseType,
+        type: "image",
         title: "Ejemplo Visual del Signo 'Hola'",
         content: "/images/greetings-hello-sign.png",
         description:
@@ -66,7 +66,7 @@ export const topicIntroductionLessons: Record<string, IntroductionLesson> = {
     exercises: [
       {
         id: "family-intro-1",
-        type: "video" as IntroductionExerciseType,
+        type: "video",
         title: "Estructura Familiar en LSM",
         content: "/assets/intro/familia_estructura.mp4",
         description:
@@ -74,7 +74,7 @@ export const topicIntroductionLessons: Record<string, IntroductionLesson> = {
       },
       {
         id: "family-intro-2",
-        type: "text" as IntroductionExerciseType,
+        type: "text",
         title: "Respeto Familiar",
         content:
           "En la cultura sorda, las señas familiares son especialmente respetuosas y reflejan la importancia de los vínculos cercanos. Es común adaptar las señas dependiendo del afecto o relación con la persona.",
@@ -92,7 +92,7 @@ export const topicIntroductionLessons: Record<string, IntroductionLesson> = {
     exercises: [
       {
         id: "numbers-intro-1",
-        type: "video" as IntroductionExerciseType,
+        type: "video",
         title: "Sistema Numérico en LSM",
         content: "/assets/intro/numeros_sistema.mp4",
         description:
@@ -100,7 +100,7 @@ export const topicIntroductionLessons: Record<string, IntroductionLesson> = {
       },
       {
         id: "numbers-intro-2",
-        type: "text" as IntroductionExerciseType,
+        type: "text",
         title: "Aplicaciones Prácticas",
         content:
           "Los números se usan en fechas, edades, precios y muchas situaciones cotidianas. La posición y orientación de la mano pueden variar según el número.",
@@ -118,7 +118,7 @@ export const topicIntroductionLessons: Record<string, IntroductionLesson> = {
     exercises: [
       {
         id: "colors-intro-1",
-        type: "video" as IntroductionExerciseType,
+        type: "video",
         title: "Percepción del Color",
         content: "/assets/intro/colores_percepcion.mp4",
         description:
@@ -126,7 +126,7 @@ export const topicIntroductionLessons: Record<string, IntroductionLesson> = {
       },
       {
         id: "colors-intro-2",
-        type: "text" as IntroductionExerciseType,
+        type: "text",
         title: "Expresividad Visual",
         content:
           "Los colores en LSM son altamente expresivos, reforzando la naturaleza visual del lenguaje. Las señas suelen inspirarse en objetos o situaciones asociadas con el color.",
@@ -144,7 +144,7 @@ export const topicIntroductionLessons: Record<string, IntroductionLesson> = {
     exercises: [
       {
         id: "food-intro-1",
-        type: "video" as IntroductionExerciseType,
+        type: "video",
         title: "Cultura Gastronómica",
         content: "/assets/intro/comida_cultura.mp4",
         description:
@@ -152,7 +152,7 @@ export const topicIntroductionLessons: Record<string, IntroductionLesson> = {
       },
       {
         id: "food-intro-2",
-        type: "text" as IntroductionExerciseType,
+        type: "text",
         title: "Contexto Social",
         content:
           "Compartir comida es una forma importante de socializar en la comunidad sorda. Las señas de alimentos suelen estar ligadas a su forma o manera de comerlos.",
@@ -170,7 +170,7 @@ export const topicIntroductionLessons: Record<string, IntroductionLesson> = {
     exercises: [
       {
         id: "animals-intro-1",
-        type: "video" as IntroductionExerciseType,
+        type: "video",
         title: "Imitación Natural",
         content: "/assets/intro/animales_imitacion.mp4",
         description:
@@ -178,7 +178,7 @@ export const topicIntroductionLessons: Record<string, IntroductionLesson> = {
       },
       {
         id: "animals-intro-2",
-        type: "text" as IntroductionExerciseType,
+        type: "text",
         title: "Conexión con la Naturaleza",
         content:
           "El aprendizaje de las señas de animales refuerza la conexión entre la naturaleza y la expresión visual del lenguaje.",
@@ -196,7 +196,7 @@ export const topicIntroductionLessons: Record<string, IntroductionLesson> = {
     exercises: [
       {
         id: "emotions-intro-1",
-        type: "video" as IntroductionExerciseType,
+        type: "video",
         title: "Expresión Facial",
         content: "/assets/intro/emociones_facial.mp4",
         description:
@@ -204,7 +204,7 @@ export const topicIntroductionLessons: Record<string, IntroductionLesson> = {
       },
       {
         id: "emotions-intro-2",
-        type: "text" as IntroductionExerciseType,
+        type: "text",
         title: "Comunicación Emocional",
         content:
           "En LSM, las emociones se comunican de forma visual y directa, fortaleciendo la empatía y comprensión entre personas.",
@@ -222,7 +222,7 @@ export const topicIntroductionLessons: Record<string, IntroductionLesson> = {
     exercises: [
       {
         id: "places-intro-1",
-        type: "video" as IntroductionExerciseType,
+        type: "video",
         title: "Orientación Espacial",
         content: "/assets/intro/lugares_orientacion.mp4",
         description:
@@ -230,7 +230,7 @@ export const topicIntroductionLessons: Record<string, IntroductionLesson> = {
       },
       {
         id: "places-intro-2",
-        type: "text" as IntroductionExerciseType,
+        type: "text",
         title: "Mapas Mentales",
         content:
           "La estructura espacial en LSM permite representar lugares en el aire, facilitando la comprensión de direcciones y ubicaciones.",
@@ -248,7 +248,7 @@ export const topicIntroductionLessons: Record<string, IntroductionLesson> = {
     exercises: [
       {
         id: "time-intro-1",
-        type: "video" as IntroductionExerciseType,
+        type: "video",
         title: "Línea de Tiempo",
         content: "/assets/intro/tiempo_linea.mp4",
         description:
@@ -256,7 +256,7 @@ export const topicIntroductionLessons: Record<string, IntroductionLesson> = {
       },
       {
         id: "time-intro-2",
-        type: "text" as IntroductionExerciseType,
+        type: "text",
         title: "Concepto Temporal",
         content:
           "La percepción del tiempo en LSM es visual y espacial, permitiendo describir acciones pasadas y futuras con fluidez.",
@@ -274,7 +274,7 @@ export const topicIntroductionLessons: Record<string, IntroductionLesson> = {
     exercises: [
       {
         id: "questions-intro-1",
-        type: "video" as IntroductionExerciseType,
+        type: "video",
         title: "Gramática Interrogativa",
         content: "/assets/intro/preguntas_gramatica.mp4",
         description:
@@ -282,7 +282,7 @@ export const topicIntroductionLessons: Record<string, IntroductionLesson> = {
       },
       {
         id: "questions-intro-2",
-        type: "text" as IntroductionExerciseType,
+        type: "text",
         title: "Curiosidad Cultural",
         content:
           "Hacer preguntas es esencial para mantener la comunicación visual activa y demostrar interés en la conversación.",
