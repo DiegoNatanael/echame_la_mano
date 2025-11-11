@@ -141,28 +141,40 @@ export const topicIntroductionLessons: Record<string, IntroductionLesson> = {
   "intro-greetings": {
     id: "intro-greetings",
     title: "Introducción a Saludos",
-    description: "Aprende los conceptos básicos de los saludos en LSM",
+    description:
+      "Aprende los conceptos básicos de los saludos en LSM y su importancia cultural dentro de la comunidad sorda mexicana.",
     icon: "👋",
     order: 1,
-    totalDuration: 240,
     exercises: [
       {
         id: "greetings-intro-1",
         type: "video" as IntroductionExerciseType,
-        title: "Importancia de los Saludos en el LSM",
-        content: "https://www.youtube.com/watch?v=YNBeHPcxlR0",
-        description: "¿Por qué los saludos son fundamentales en LSM?"
+        title: "Importancia de los Saludos en LSM",
+        content: "https://www.youtube.com/embed/YNBeHPcxlR0",
+        description:
+          "Descubre por qué los saludos son una parte esencial de la comunicación en LSM. Aprende cómo un buen saludo establece respeto y conexión visual con la otra persona.",
       },
       {
         id: "greetings-intro-2",
         type: "text" as IntroductionExerciseType,
         title: "Contexto Cultural",
-        content: "Los saludos en la cultura sorda mexicana tienen un significado especial y muestran respeto hacia la comunidad.",
-        duration: 120,
-        description: "Entendiendo el contexto cultural de los saludos"
-      }
-    ]
+        content:
+          "En la comunidad sorda mexicana, los saludos no solo son una cortesía: son una muestra de respeto, reconocimiento y disposición a comunicarse. Al saludar, es fundamental mantener contacto visual y acompañar la seña con una expresión facial cordial. Los saludos pueden variar según la formalidad del entorno o la cercanía entre las personas.",
+        description:
+          "Comprende la importancia cultural de los saludos y su papel dentro de la comunidad sorda.",
+      },
+      {
+        id: "greetings-intro-3",
+        type: "image" as IntroductionExerciseType,
+        title: "Ejemplo Visual del Signo 'Hola'",
+        content: "/images/greetings-hello-sign.png",
+        description:
+          "El signo de 'Hola' en LSM se realiza llevando la mano extendida cerca de la frente y moviéndola ligeramente hacia afuera, acompañado de una expresión facial amistosa.",
+      },
+    ],
   },
+};
+
   "intro-family": {
     id: "intro-family",
     title: "Introducción a Familia",
