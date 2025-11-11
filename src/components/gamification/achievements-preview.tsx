@@ -30,22 +30,22 @@ export function AchievementsPreview({ totalXp, completedLessons, currentStreak }
     {
       id: "ten-lessons",
       title: "Dedicado",
-      description: "Completa 10 lecciones",
-      unlocked: completedLessons >= 10,
+      description: "Completa 5 lecciones",
+      unlocked: completedLessons >= 5,
       icon: "📚",
     },
     {
       id: "week-streak",
       title: "Constante",
-      description: "Mantén una racha de 7 días",
-      unlocked: currentStreak >= 7,
+      description: "Mantén una racha de 3 días",
+      unlocked: currentStreak >= 3,
       icon: "🔥",
     },
     {
       id: "xp-master",
       title: "Maestro XP",
-      description: "Alcanza 1000 XP",
-      unlocked: totalXp >= 1000,
+      description: "Alcanza 300 XP",
+      unlocked: totalXp >= 300,
       icon: "⭐",
     },
   ]
