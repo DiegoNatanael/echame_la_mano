@@ -127,12 +127,22 @@ export default function IntroductionLessonPage() {
 
               {/* Render different exercise types */}
               {currentExercise.type === "video" && (
-                <div className="aspect-video bg-muted rounded-lg overflow-hidden flex items-center justify-center">
-                  <video 
-                    src={currentExercise.content}
-                    controls
-                    className="w-full h-full object-contain"
-                  />
+                <div className="aspect-video bg-muted rounded-lg overflow-hidden">
+                  {currentExercise.content.includes('youtube.com') || currentExercise.content.includes('youtu.be') ? (
+                    <iframe
+                      src={currentExercise.content}
+                      className="w-full h-full"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowFullScreen
+                      title={currentExercise.title}
+                    />
+                  ) : (
+                    <video 
+                      src={currentExercise.content}
+                      controls
+                      className="w-full h-full object-contain"
+                    />
+                  )}
                 </div>
               )}
 
