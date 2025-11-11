@@ -150,7 +150,7 @@ export const topicIntroductionLessons: Record<string, IntroductionLesson> = {
         id: "greetings-intro-1",
         type: "video" as IntroductionExerciseType,
         title: "Importancia de los Saludos en LSM",
-        content: "https://www.youtube.com/watch?v=YNBeHPcxlR0",
+        content: "https://www.youtube.com/embed/YNBeHPcxlR0",
         description:
           "Descubre por qué los saludos son una parte esencial de la comunicación en LSM. Aprende cómo un buen saludo establece respeto y conexión visual con la otra persona.",
       },
