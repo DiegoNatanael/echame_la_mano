@@ -149,10 +149,9 @@ export const topicIntroductionLessons: Record<string, IntroductionLesson> = {
       {
         id: "greetings-intro-1",
         type: "video" as IntroductionExerciseType,
-        title: "Importancia de los Saludos",
-        content: "/assets/intro/saludos_importancia.mp4",
-        duration: 120,
-        description: "Por qué los saludos son fundamentales en LSM"
+        title: "Importancia de los Saludos en el LSM",
+        content: "https://www.youtube.com/watch?v=YNBeHPcxlR0",
+        description: "¿Por qué los saludos son fundamentales en LSM?"
       },
       {
         id: "greetings-intro-2",
