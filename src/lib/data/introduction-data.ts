@@ -19,6 +19,109 @@ export interface IntroductionLesson {
   exercises: IntroductionExercise[]
 }
 
+// General introduction lessons
+export const generalIntroductionLessons: IntroductionLesson[] = [
+  {
+    id: "introduction",
+    title: "Introducción a LSM",
+    description: "Aprende qué es la Lengua de Señas Mexicana y su importancia",
+    icon: "👋",
+    order: 1,
+    exercises: [
+      {
+        id: "intro-video-1",
+        type: "video" as IntroductionExerciseType,
+        title: "¿Qué es LSM?",
+        content: "https://www.youtube.com/embed/PZ6XVO2X1K4",
+        description: "Video explicativo sobre la Lengua de Señas Mexicana"
+      },
+      {
+        id: "intro-video-2",
+        type: "video" as IntroductionExerciseType,
+        title: "Básicos de LSM",
+        content: "https://www.youtube.com/embed/MZOUTIjz4ac",
+        description: "Primeros pasos con las señas básicas"
+      }
+    ]
+  },
+  {
+    id: "basic-etiquette",
+    title: "Etiqueta Básica",
+    description: "Normas y buenas prácticas al comunicarte en LSM",
+    icon: "🤝",
+    order: 2,
+    exercises: [
+      {
+        id: "etiquette-video-1",
+        type: "video" as IntroductionExerciseType,
+        title: "Cómo llamar la atención",
+        content: "https://www.youtube.com/embed/ycER7RT3WU0",
+        description: "Formas apropiadas de llamar la atención en LSM"
+      },
+      {
+        id: "etiquette-video-2",
+        type: "video" as IntroductionExerciseType,
+        title: "Saludos y Despedidas",
+        content: "https://www.youtube.com/embed/9kt4R2wCrv4",
+        description: "Formas apropiadas de saludar y despedirse en LSM"
+      }
+    ]
+  },
+  {
+    id: "hand-alphabet",
+    title: "Alfabeto Manual",
+    description: "Aprende las señas del alfabeto para deletrear palabras",
+    icon: "🔤",
+    order: 3,
+    exercises: [
+      {
+        id: "alphabet-video-1",
+        type: "video" as IntroductionExerciseType,
+        title: "ABC de LSM",
+        content: "https://www.youtube.com/embed/PZ6XVO2X1K4",
+        description: "Primeras letras del alfabeto manual"
+      },
+      {
+        id: "alphabet-video-2",
+        type: "video" as IntroductionExerciseType,
+        title: "Dactilología",
+        content: "https://www.youtube.com/embed/PZ6XVO2X1K4",
+        description: "Ejercicios de fonología (Dactilología)"
+      },
+      {
+        id: "alphabet-video-3",
+        type: "video" as IntroductionExerciseType,
+        title: "Práctica del Abecedario",
+        content: "https://www.youtube.com/embed/9CmVcoaOu6A",
+        description: "Practica las letras del abecedario en LSM"
+      }
+    ]
+  },
+  {
+    id: "numbers-1-10",
+    title: "Números 1-10",
+    description: "Aprende a contar del 1 al 10 en LSM",
+    icon: "🔢",
+    order: 4,
+    exercises: [
+      {
+        id: "numbers-video-1",
+        type: "video" as IntroductionExerciseType,
+        title: "Números 1-5",
+        content: "https://www.youtube.com/playlist?list=PLi8XpZVEKlLqqqR2-J4gxqxyP0KtahNPw",
+        description: "Aprende a mostrar los números del 1 al 5"
+      },
+      {
+        id: "numbers-video-2",
+        type: "video" as IntroductionExerciseType,
+        title: "Números 6-10",
+        content: "https://www.youtube.com/playlist?list=PLi8XpZVEKlLqqqR2-J4gxqxyP0KtahNPw",
+        description: "Aprende a mostrar los números del 6 al 10"
+      }
+    ]
+  }
+]
+
 // Topic-specific introduction lessons
 export const topicIntroductionLessons: Record<string, IntroductionLesson> = {
   "intro-greetings": {
@@ -33,26 +136,26 @@ export const topicIntroductionLessons: Record<string, IntroductionLesson> = {
         id: "greetings-intro-1",
         type: "video",
         title: "Importancia de los Saludos en LSM",
-        content: "https://www.youtube.com/embed/YNBeHPcxlR0",        
+        content: "https://www.youtube.com/embed/ycER7RT3WU0",
         description:
           "Descubre por qué los saludos son una parte esencial de la comunicación en LSM. Aprende cómo un buen saludo establece respeto y conexión visual con la otra persona.",
       },
       {
         id: "greetings-intro-2",
+        type: "video",
+        title: "Saludos Básicos",
+        content: "https://www.youtube.com/embed/9kt4R2wCrv4",
+        description:
+          "Aprende las señas básicas de saludo como 'Hola', 'Buenos días', 'Buenas tardes', 'Adiós', etc.",
+      },
+      {
+        id: "greetings-intro-3",
         type: "text",
         title: "Contexto Cultural",
         content:
           "En la comunidad sorda mexicana, los saludos no solo son una cortesía: son una muestra de respeto, reconocimiento y disposición a comunicarse. Al saludar, es fundamental mantener contacto visual y acompañar la seña con una expresión facial cordial. Los saludos pueden variar según la formalidad del entorno o la cercanía entre las personas.",
         description:
           "Comprende la importancia cultural de los saludos y su papel dentro de la comunidad sorda.",
-      },
-      {
-        id: "greetings-intro-3",
-        type: "image",
-        title: "Ejemplo Visual del Signo 'Hola'",
-        content: "/images/greetings-hello-sign.png",
-        description:
-          "El signo de 'Hola' en LSM se realiza llevando la mano extendida cerca de la frente y moviéndola ligeramente hacia afuera, acompañado de una expresión facial amistosa.",
       },
     ],
   },
@@ -68,12 +171,19 @@ export const topicIntroductionLessons: Record<string, IntroductionLesson> = {
         id: "family-intro-1",
         type: "video",
         title: "Estructura Familiar en LSM",
-        content: "/assets/intro/familia_estructura.mp4",
+        content: "https://www.youtube.com/embed/ycER7RT3WU0",
         description:
           "Conoce cómo se estructuran las señas para 'madre', 'padre', 'hermano', 'hermana' y otros miembros de la familia.",
       },
       {
         id: "family-intro-2",
+        type: "video",
+        title: "Señas de Familia",
+        content: "https://www.youtube.com/embed/0XPEfoqRnXo",
+        description: "Aprende las señas específicas para diferentes miembros de la familia.",
+      },
+      {
+        id: "family-intro-3",
         type: "text",
         title: "Respeto Familiar",
         content:
@@ -94,12 +204,19 @@ export const topicIntroductionLessons: Record<string, IntroductionLesson> = {
         id: "numbers-intro-1",
         type: "video",
         title: "Sistema Numérico en LSM",
-        content: "/assets/intro/numeros_sistema.mp4",
+        content: "https://www.youtube.com/playlist?list=PLi8XpZVEKlLqqqR2-J4gxqxyP0KtahNPw",
         description:
           "Descubre cómo se representan los números en LSM, desde el 1 al 10, y cómo su movimiento indica cantidad o contexto.",
       },
       {
         id: "numbers-intro-2",
+        type: "video",
+        title: "Números 1-20",
+        content: "https://www.youtube.com/playlist?list=PLi8XpZVEKlLqqqR2-J4gxqxyP0KtahNPw",
+        description: "Aprende los números del 1 al 20 en LSM.",
+      },
+      {
+        id: "numbers-intro-3",
         type: "text",
         title: "Aplicaciones Prácticas",
         content:
@@ -120,12 +237,19 @@ export const topicIntroductionLessons: Record<string, IntroductionLesson> = {
         id: "colors-intro-1",
         type: "video",
         title: "Percepción del Color",
-        content: "/assets/intro/colores_percepcion.mp4",
+        content: "https://www.youtube.com/embed/U7m4daxkSBQ",
         description:
           "Aprende las señas básicas para los colores primarios y secundarios, y cómo se relacionan con emociones y objetos.",
       },
       {
         id: "colors-intro-2",
+        type: "video",
+        title: "Colores con Animales",
+        content: "https://www.youtube.com/embed/PdPK_wJixFU",
+        description: "Aprende los colores combinados con animales para mejor memorización.",
+      },
+      {
+        id: "colors-intro-3",
         type: "text",
         title: "Expresividad Visual",
         content:
@@ -146,12 +270,19 @@ export const topicIntroductionLessons: Record<string, IntroductionLesson> = {
         id: "food-intro-1",
         type: "video",
         title: "Cultura Gastronómica",
-        content: "/assets/intro/comida_cultura.mp4",
+        content: "https://www.youtube.com/embed/oW-fK5Ejn1w",
         description:
           "Aprende cómo se representan los alimentos comunes y cómo la comida se convierte en un punto de encuentro social en la comunidad sorda.",
       },
       {
         id: "food-intro-2",
+        type: "video",
+        title: "Alimentos y Comida",
+        content: "https://www.youtube.com/embed/oW-fK5Ejn1w",
+        description: "Aprende las señas básicas para alimentos y bebidas comunes.",
+      },
+      {
+        id: "food-intro-3",
         type: "text",
         title: "Contexto Social",
         content:
@@ -172,12 +303,19 @@ export const topicIntroductionLessons: Record<string, IntroductionLesson> = {
         id: "animals-intro-1",
         type: "video",
         title: "Imitación Natural",
-        content: "/assets/intro/animales_imitacion.mp4",
+        content: "https://www.youtube.com/embed/0XPEfoqRnXo",
         description:
           "Las señas para animales suelen basarse en la imitación de sus características físicas o sonidos.",
       },
       {
         id: "animals-intro-2",
+        type: "video",
+        title: "Animales y Sonidos",
+        content: "https://www.youtube.com/embed/0XPEfoqRnXo",
+        description: "Aprende cómo se representan diferentes animales y sus sonidos en LSM.",
+      },
+      {
+        id: "animals-intro-3",
         type: "text",
         title: "Conexión con la Naturaleza",
         content:
@@ -198,12 +336,19 @@ export const topicIntroductionLessons: Record<string, IntroductionLesson> = {
         id: "emotions-intro-1",
         type: "video",
         title: "Expresión Facial",
-        content: "/assets/intro/emociones_facial.mp4",
+        content: "https://www.youtube.com/embed/nKGH3mJxRcs",
         description:
           "La expresión facial es clave para comunicar emociones en LSM. Sin ella, las señas pierden gran parte de su significado.",
       },
       {
         id: "emotions-intro-2",
+        type: "video",
+        title: "Emociones y Sentimientos",
+        content: "https://www.tiktok.com/@habraamhn/video/7458413859347434757",
+        description: "Aprende las señas para diferentes emociones y sentimientos comunes.",
+      },
+      {
+        id: "emotions-intro-3",
         type: "text",
         title: "Comunicación Emocional",
         content:
@@ -224,12 +369,19 @@ export const topicIntroductionLessons: Record<string, IntroductionLesson> = {
         id: "places-intro-1",
         type: "video",
         title: "Orientación Espacial",
-        content: "/assets/intro/lugares_orientacion.mp4",
+        content: "https://www.youtube.com/embed/9CmVcoaOu6A",
         description:
           "En LSM, los lugares se señalan con base en la ubicación espacial, similar a un mapa mental tridimensional.",
       },
       {
         id: "places-intro-2",
+        type: "video",
+        title: "Días de la Semana en LSM",
+        content: "https://www.youtube.com/embed/Qt7dGwpRPgo",
+        description: "Aprende cómo se representan los días de la semana en LSM.",
+      },
+      {
+        id: "places-intro-3",
         type: "text",
         title: "Mapas Mentales",
         content:
@@ -250,12 +402,19 @@ export const topicIntroductionLessons: Record<string, IntroductionLesson> = {
         id: "time-intro-1",
         type: "video",
         title: "Línea de Tiempo",
-        content: "/assets/intro/tiempo_linea.mp4",
+        content: "https://www.youtube.com/embed/Qt7dGwpRPgo",
         description:
           "El tiempo se representa espacialmente, con el pasado detrás, el presente frente y el futuro hacia adelante.",
       },
       {
         id: "time-intro-2",
+        type: "video",
+        title: "Meses del Año",
+        content: "https://www.youtube.com/embed/zSnR3HGYth8",
+        description: "Aprende cómo se representan los meses del año en LSM.",
+      },
+      {
+        id: "time-intro-3",
         type: "text",
         title: "Concepto Temporal",
         content:
@@ -276,12 +435,19 @@ export const topicIntroductionLessons: Record<string, IntroductionLesson> = {
         id: "questions-intro-1",
         type: "video",
         title: "Gramática Interrogativa",
-        content: "/assets/intro/preguntas_gramatica.mp4",
+        content: "https://www.youtube.com/embed/9kt4R2wCrv4",
         description:
           "Las preguntas en LSM usan movimientos de cejas y expresiones faciales específicas para indicar si son abiertas o cerradas.",
       },
       {
         id: "questions-intro-2",
+        type: "video",
+        title: "Tipos de Preguntas",
+        content: "https://www.youtube.com/embed/9kt4R2wCrv4",
+        description: "Aprende cómo formular diferentes tipos de preguntas en LSM.",
+      },
+      {
+        id: "questions-intro-3",
         type: "text",
         title: "Curiosidad Cultural",
         content:

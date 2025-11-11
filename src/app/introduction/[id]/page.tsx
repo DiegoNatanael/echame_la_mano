@@ -4,7 +4,7 @@ import { useState, useEffect } from "react"
 import { useRouter, useParams } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
-import { generalIntroductionLessons, topicIntroductionLessons } from "@/lib/data/introduction-data"
+import { generalIntroductionLessons as generalIntros, topicIntroductionLessons } from "@/lib/data/introduction-data"
 import { useAuth } from "@/lib/auth/auth-context"
 import { getProgress, saveProgress } from "@/lib/storage/local-storage"
 import type { UserProgress } from "@/lib/types/user"
@@ -28,7 +28,7 @@ export default function IntroductionLessonPage() {
     }
 
     // Find the lesson - check both general and topic-specific introductions
-    let foundLesson = generalIntroductionLessons.find((l) => l.id === lessonId);
+    let foundLesson = generalIntros.find((l: any) => l.id === lessonId);
     
     // If not found in general introductions, check topic-specific
     if (!foundLesson && lessonId in topicIntroductionLessons) {
@@ -105,7 +105,15 @@ export default function IntroductionLessonPage() {
       <div className="container mx-auto px-4 py-8">
         <div className="max-w-4xl mx-auto">
           <div className="flex items-center gap-4 mb-6">
-            <Button variant="outline" onClick={() => router.push("/learn")}>← Volver</Button>
+            <Button variant="outline" onClick={() => {
+              if (lessonId.startsWith('intro-') && !generalIntros.some((g: any) => g.id === lessonId)) {
+                router.push("/learn");
+              } else {
+                router.push("/introduction");
+              }
+            }}>
+              ← Volver
+            </Button>
             <div>
               <h1 className="text-2xl font-bold">{lesson.title}</h1>
               <p className="text-muted-foreground">{lesson.description}</p>
