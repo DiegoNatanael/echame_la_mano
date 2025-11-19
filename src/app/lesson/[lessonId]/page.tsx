@@ -5,10 +5,12 @@ import { useRouter, useParams } from "next/navigation"
 import { LessonHeader } from "@/components/lesson/lesson-header"
 import { ExerciseCard } from "@/components/lesson/exercise-card"
 import { LessonComplete } from "@/components/lesson/lesson-complete"
+import { AchievementToast } from "@/components/gamification/achievement-toast"
 import { topics } from "@/lib/data/lesson-data"
 import type { Lesson } from "@/lib/data/lesson-data"
 import { getProgress, updateProgressAfterLesson, saveLessonAttempt } from "@/lib/storage/local-storage"
 import { useAuth } from "@/lib/auth/auth-context"
+import { checkAchievements } from "@/lib/achievements/achievement-checker"
 
 export default function LessonPage() {
   const router = useRouter()
@@ -22,6 +24,8 @@ export default function LessonPage() {
   const [xpEarned, setXpEarned] = useState(0)
   const [mistakes, setMistakes] = useState(0)
   const [isComplete, setIsComplete] = useState(false)
+  const [showAchievement, setShowAchievement] = useState(false)
+  const [achievementData, setAchievementData] = useState({ title: '', description: '', icon: null as React.ReactNode | null });
 
   useEffect(() => {
     // Find the lesson
@@ -92,6 +96,8 @@ export default function LessonPage() {
     if (!lesson || !user) return
 
     setTimeout(() => {
+      // Get progress before updating to compare for achievements
+      const previousProgress = getProgress();
       const heartsLost = mistakes
       const updatedProgress = updateProgressAfterLesson(lesson.id, lesson.topicId, xpEarned, heartsLost)
 
@@ -100,6 +106,28 @@ export default function LessonPage() {
         if (updatedProgress.hearts === 5 && updatedProgress.completedLessons.length === 0) {
           router.push('/learn');
           return;
+        }
+
+        // Check for achievements if we have both old and new progress
+        if (previousProgress) {
+          const newAchievements = checkAchievements(updatedProgress, previousProgress);
+
+          if (newAchievements.length > 0) {
+            // Show achievement toast for the first achievement
+            const achievement = newAchievements[0];
+            setAchievementData({
+              title: achievement.title,
+              description: achievement.description,
+              icon: null // We'll let the AchievementToast handle the icon based on title
+            });
+            setShowAchievement(true);
+
+            // Add any XP bonus from achievements
+            const bonusXp = achievement.xpBonus || 0;
+            if (bonusXp > 0) {
+              setXpEarned(prev => prev + bonusXp);
+            }
+          }
         }
       }
 
@@ -114,7 +142,7 @@ export default function LessonPage() {
       })
 
       setIsComplete(true)
-    }, 1500) 
+    }, 1500)
   }
 
   const handleExit = () => {
@@ -136,16 +164,30 @@ export default function LessonPage() {
   if (isComplete) {
     const accuracy = Math.round(((lesson.exercises.length - mistakes) / lesson.exercises.length) * 100)
     return (
-      <LessonComplete xpEarned={xpEarned} heartsRemaining={hearts} accuracy={accuracy} onContinue={handleContinue} />
+      <div className="relative">
+        <LessonComplete xpEarned={xpEarned} heartsRemaining={hearts} accuracy={accuracy} onContinue={handleContinue} />
+        <AchievementToast
+          title={achievementData.title}
+          description={achievementData.description}
+          isVisible={showAchievement}
+          onClose={() => setShowAchievement(false)}
+        />
+      </div>
     )
   }
 
   const currentExercise = lesson.exercises[currentExerciseIndex]
 
   return (
-    // FIX 1: Use h-screen and overflow-hidden to prevent body scroll
-    <div className="h-screen w-screen flex flex-col overflow-hidden bg-background">
-      
+    <div className="relative h-screen w-screen flex flex-col overflow-hidden bg-background">
+      {/* Achievement Toast - appears at bottom right */}
+      <AchievementToast
+        title={achievementData.title}
+        description={achievementData.description}
+        isVisible={showAchievement}
+        onClose={() => setShowAchievement(false)}
+      />
+
       {/* Header stays fixed at top */}
       <div className="flex-none">
         <LessonHeader
@@ -158,7 +200,7 @@ export default function LessonPage() {
 
       {/* FIX 2: Main content area that grows to fill space but doesn't overflow */}
       <div className="flex-1 flex flex-col items-center justify-center p-4 relative w-full">
-        
+
         {/* FIX 3: Constrain width so it doesn't look huge on desktop */}
         <div className="w-full max-w-xl h-full flex flex-col justify-center">
            <ExerciseCard exercise={currentExercise} onAnswer={handleAnswer} />
