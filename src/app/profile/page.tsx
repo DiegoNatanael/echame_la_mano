@@ -34,30 +34,37 @@ export default function ProfilePage() {
 
   if (isLoading || !user || !progress) {
     return (
-      <div className="min-h-screen flex items-center justify-center">
-        <p>Cargando perfil...</p>
+      <div className="min-h-screen flex items-center justify-center bg-transparent">
+        <p className="text-muted-foreground animate-pulse">Cargando perfil...</p>
       </div>
     )
   }
 
   const totalLessons = Object.values(progress.topicProgress).reduce((sum, topic) => sum + topic.totalLessons, 0)
   const completedLessons = progress.completedLessons.length
-  const overallProgress = (completedLessons / totalLessons) * 100
+  const overallProgress = totalLessons > 0 ? (completedLessons / totalLessons) * 100 : 0
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
-      <AppHeader />
-      <div className="container mx-auto px-4 py-8">
+    // FIX: Changed to bg-transparent to show bubbles
+    <div className="min-h-screen bg-transparent">
+      <AppHeader 
+        hearts={progress.hearts}
+        streak={progress.currentStreak}
+        xp={progress.totalXp}
+      />
+      
+      <div className="container mx-auto px-4 py-8 animate-in fade-in slide-in-from-bottom-4 duration-700">
         <div className="max-w-6xl mx-auto space-y-6">
+          
           {/* User Info */}
-          <Card>
+          <Card className="bg-white/90 backdrop-blur-sm border-white/50 shadow-lg">
             <CardHeader>
               <div className="flex items-center justify-between">
                 <div>
                   <CardTitle className="text-3xl">{user.name}</CardTitle>
                   <p className="text-muted-foreground">{user.email}</p>
                 </div>
-                <div className="text-right">
+                <div className="text-right hidden sm:block">
                   <p className="text-sm text-muted-foreground">Miembro desde</p>
                   <p className="font-medium">{new Date(user.createdAt).toLocaleDateString("es-MX")}</p>
                 </div>
@@ -98,7 +105,7 @@ export default function ProfilePage() {
           <StreakDisplay currentStreak={progress.currentStreak} longestStreak={progress.longestStreak} />
 
           {/* Topic Progress */}
-          <Card>
+          <Card className="bg-white/90 backdrop-blur-sm border-white/50 shadow-md">
             <CardHeader>
               <CardTitle>Progreso por Tema</CardTitle>
             </CardHeader>

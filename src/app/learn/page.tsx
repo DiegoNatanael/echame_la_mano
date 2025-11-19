@@ -42,15 +42,17 @@ export default function LearnPage() {
 
   if (isLoading || !user || !progress) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-background">
+      // FIX: Changed bg-background to bg-transparent
+      <div className="min-h-screen flex items-center justify-center bg-transparent">
         <p className="text-muted-foreground animate-pulse">Cargando...</p>
       </div>
     )
   }
 
   return (
-    // Changed from blue gradient to your theme background
-    <div className="min-h-screen bg-background text-foreground">
+    // FIX: Changed 'bg-background' to 'bg-transparent' 
+    // This allows the BubblesBackground from layout.tsx to be visible!
+    <div className="min-h-screen bg-transparent text-foreground">
       
       <AppHeader
         hearts={progress.hearts}
@@ -59,9 +61,6 @@ export default function LearnPage() {
         xp={progress.totalXp}
       />
 
-      {/* The Scroll Carousel handles its own layout/pinning.
-         We pass the title and subtitle here so they stick while scrolling.
-      */}
       <HorizontalScrollCarousel 
         title="Aprende Lengua de Señas MX"
         subtitle="Desliza hacia abajo para explorar los temas"
@@ -70,7 +69,6 @@ export default function LearnPage() {
           const topicProgress = progress.topicProgress[topic.id]
           
           return (
-            // We wrap the card in a div that ensures full height within the carousel slide
             <div key={topic.id} className="h-full w-full">
                <TopicCardHorizontal
                 topic={topic}
@@ -84,8 +82,8 @@ export default function LearnPage() {
         })}
       </HorizontalScrollCarousel>
       
-      {/* Optional: Add a footer or extra space below so scrolling feels natural at the end */}
-      <div className="h-20 flex items-center justify-center text-muted-foreground/50 text-sm">
+      {/* Added a backdrop-blur to the footer so it's readable over bubbles */}
+      <div className="h-20 flex items-center justify-center text-slate-600 text-sm font-medium backdrop-blur-sm">
         Sigue aprendiendo para desbloquear más temas
       </div>
     </div>
