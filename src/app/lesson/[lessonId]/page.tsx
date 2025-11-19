@@ -6,6 +6,7 @@ import { LessonHeader } from "@/components/lesson/lesson-header"
 import { ExerciseCard } from "@/components/lesson/exercise-card"
 import { LessonComplete } from "@/components/lesson/lesson-complete"
 import { AchievementToast } from "@/components/gamification/achievement-toast"
+import { BubblesBackground } from "@/components/ui/bubbles-background" // <--- IMPORTED
 import { topics } from "@/lib/data/lesson-data"
 import type { Lesson } from "@/lib/data/lesson-data"
 import { getProgress, updateProgressAfterLesson, saveLessonAttempt } from "@/lib/storage/local-storage"
@@ -155,8 +156,9 @@ export default function LessonPage() {
 
   if (!lesson) {
     return (
-      <div className="min-h-screen flex items-center justify-center">
-        <p>Cargando lección...</p>
+      <div className="min-h-screen flex items-center justify-center bg-transparent">
+        <BubblesBackground bubbleCount={30} speed={1} />
+        <p className="relative z-10">Cargando lección...</p>
       </div>
     )
   }
@@ -164,8 +166,14 @@ export default function LessonPage() {
   if (isComplete) {
     const accuracy = Math.round(((lesson.exercises.length - mistakes) / lesson.exercises.length) * 100)
     return (
-      <div className="relative">
-        <LessonComplete xpEarned={xpEarned} heartsRemaining={hearts} accuracy={accuracy} onContinue={handleContinue} />
+      <div className="relative min-h-screen bg-transparent">
+        {/* Bubbles for the celebration screen */}
+        <BubblesBackground bubbleCount={50} speed={2} />
+        
+        <div className="relative z-10">
+            <LessonComplete xpEarned={xpEarned} heartsRemaining={hearts} accuracy={accuracy} onContinue={handleContinue} />
+        </div>
+        
         <AchievementToast
           title={achievementData.title}
           description={achievementData.description}
@@ -179,7 +187,12 @@ export default function LessonPage() {
   const currentExercise = lesson.exercises[currentExerciseIndex]
 
   return (
-    <div className="relative h-screen w-screen flex flex-col overflow-hidden bg-background">
+    // FIX: Changed bg-background to bg-transparent so bubbles show
+    <div className="relative h-screen w-screen flex flex-col overflow-hidden bg-transparent">
+      
+      {/* Bubbles Background Layer */}
+      <BubblesBackground bubbleCount={40} speed={1} />
+
       {/* Achievement Toast - appears at bottom right */}
       <AchievementToast
         title={achievementData.title}
@@ -188,8 +201,8 @@ export default function LessonPage() {
         onClose={() => setShowAchievement(false)}
       />
 
-      {/* Header stays fixed at top */}
-      <div className="flex-none">
+      {/* Header stays fixed at top - Added z-10 to sit above bubbles */}
+      <div className="flex-none relative z-10">
         <LessonHeader
           currentExercise={currentExerciseIndex + 1}
           totalExercises={lesson.exercises.length}
@@ -198,10 +211,9 @@ export default function LessonPage() {
         />
       </div>
 
-      {/* FIX 2: Main content area that grows to fill space but doesn't overflow */}
-      <div className="flex-1 flex flex-col items-center justify-center p-4 relative w-full">
+      {/* Main content area - Added z-10 */}
+      <div className="flex-1 flex flex-col items-center justify-center p-4 relative w-full z-10">
 
-        {/* FIX 3: Constrain width so it doesn't look huge on desktop */}
         <div className="w-full max-w-xl h-full flex flex-col justify-center">
            <ExerciseCard exercise={currentExercise} onAnswer={handleAnswer} />
         </div>
