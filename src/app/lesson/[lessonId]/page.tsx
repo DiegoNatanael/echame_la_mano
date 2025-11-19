@@ -67,14 +67,12 @@ export default function LessonPage() {
       setMistakes((prev) => prev + 1)
     }
 
-    // Check if hearts reached 0, if so, reset progress and redirect
+    // Check if hearts reached 0
     if (newHearts === 0) {
-      // Trigger progress reset by calling updateProgressAfterLesson
-      const heartsLost = 1; // Current mistake
+      const heartsLost = 1; 
       const updatedProgress = updateProgressAfterLesson(lesson.id, lesson.topicId, xpEarned, heartsLost);
       
       if (updatedProgress && updatedProgress.hearts === 5) {
-        // Progress was reset, redirect to learn page
         router.push('/learn');
         return;
       }
@@ -87,29 +85,24 @@ export default function LessonPage() {
       } else {
         completeLesson()
       }
-    }, 1500) // Reduced delay to 1.5 seconds
+    }, 1500) 
   }
 
   const completeLesson = () => {
     if (!lesson || !user) return
 
-    // Show the last answer feedback briefly before showing completion
     setTimeout(() => {
       const heartsLost = mistakes
       const updatedProgress = updateProgressAfterLesson(lesson.id, lesson.topicId, xpEarned, heartsLost)
 
       if (updatedProgress) {
         setHearts(updatedProgress.hearts)
-        
-        // Check if progress was reset due to hearts reaching 0
         if (updatedProgress.hearts === 5 && updatedProgress.completedLessons.length === 0) {
-          // Progress was reset, redirect to learn page
           router.push('/learn');
           return;
         }
       }
 
-      // Save lesson attempt
       saveLessonAttempt({
         lessonId: lesson.id,
         userId: user.id,
@@ -121,7 +114,7 @@ export default function LessonPage() {
       })
 
       setIsComplete(true)
-    }, 1500) // Wait 1.5 seconds to show the last answer feedback
+    }, 1500) 
   }
 
   const handleExit = () => {
@@ -150,15 +143,27 @@ export default function LessonPage() {
   const currentExercise = lesson.exercises[currentExerciseIndex]
 
   return (
-    <div className="min-h-screen flex flex-col">
-      <LessonHeader
-        currentExercise={currentExerciseIndex + 1}
-        totalExercises={lesson.exercises.length}
-        hearts={hearts}
-        onExit={handleExit}
-      />
-      <div className="flex-1 flex items-center justify-center p-4 py-12">
-        <ExerciseCard exercise={currentExercise} onAnswer={handleAnswer} />
+    // FIX 1: Use h-screen and overflow-hidden to prevent body scroll
+    <div className="h-screen w-screen flex flex-col overflow-hidden bg-background">
+      
+      {/* Header stays fixed at top */}
+      <div className="flex-none">
+        <LessonHeader
+          currentExercise={currentExerciseIndex + 1}
+          totalExercises={lesson.exercises.length}
+          hearts={hearts}
+          onExit={handleExit}
+        />
+      </div>
+
+      {/* FIX 2: Main content area that grows to fill space but doesn't overflow */}
+      <div className="flex-1 flex flex-col items-center justify-center p-4 relative w-full">
+        
+        {/* FIX 3: Constrain width so it doesn't look huge on desktop */}
+        <div className="w-full max-w-xl h-full flex flex-col justify-center">
+           <ExerciseCard exercise={currentExercise} onAnswer={handleAnswer} />
+        </div>
+
       </div>
     </div>
   )

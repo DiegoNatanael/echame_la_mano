@@ -18,6 +18,25 @@ module.exports = {
     },
     extend: {
       colors: {
+        // Ajolote Brand Colors
+        'ajolote-pink': '#F7A9B4',
+        'ajolote-deep-pink': '#D85277',
+        'sombrero-yellow': '#F5C242',
+        'sombrero-green': '#4BAE4F',
+        'sombrero-red': '#E04C3B',
+        'bubble-blue': '#AEE6FF',
+        'sky-blue': '#8FDCFF',
+        'deep-outline': '#2A2A2A',
+
+        // UI Colors
+        'neutral-light': '#F9FAFB',
+        'neutral-gray': '#A3A3A3',
+        'neutral-dark': '#1F2937',
+        'xp-gold': '#F4B93A',
+        'life-red': '#FF5A5F',
+        'streak-orange': '#FF8C42',
+
+        // Original Colors
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",

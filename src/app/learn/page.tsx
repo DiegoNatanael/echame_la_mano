@@ -6,10 +6,9 @@ import { useAuth } from "@/lib/auth/auth-context"
 import { getProgress, initializeProgress } from "@/lib/storage/local-storage"
 import type { UserProgress } from "@/lib/types/user"
 import { topics } from "@/lib/data/lesson-data"
-// import { generalIntroductionLessons } from "@/lib/data/introduction-data"
 import { AppHeader } from "@/components/layout/app-header"
-import { TopicCard } from "@/components/learn/topic-card"
-import { QuickStatsBar } from "@/components/learn/quick-stats-bar"
+import { TopicCardHorizontal } from "@/components/learn/topic-card-horizontal"
+import { HorizontalScrollCarousel } from "@/components/learn/horizontal-scroll-carousel" 
 
 export default function LearnPage() {
   const { user, isLoading } = useAuth()
@@ -25,66 +24,69 @@ export default function LearnPage() {
     if (user) {
       const userProgress = getProgress()
       if (!userProgress) {
-        // If there's no stored progress (fresh install), initialize progress
         const initialProgress = initializeProgress(user.id)
         setProgress(initialProgress)
         return
       }
-
       setProgress(userProgress)
     }
   }, [user, isLoading, router])
 
   const handleSelectLesson = (lessonId: string) => {
     if (lessonId.startsWith('intro-')) {
-      // Handle topic-specific introductions
       router.push(`/introduction/${lessonId}`)
     } else {
-      // Handle main lessons
       router.push(`/lesson/${lessonId}`)
     }
   }
 
-  const handleSelectIntroduction = (lessonId: string) => {
-    router.push(`/introduction/${lessonId}`)
-  }
-
   if (isLoading || !user || !progress) {
     return (
-      <div className="min-h-screen flex items-center justify-center">
-        <p>Cargando...</p>
+      <div className="min-h-screen flex items-center justify-center bg-background">
+        <p className="text-muted-foreground animate-pulse">Cargando...</p>
       </div>
     )
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
-      <AppHeader />
-      <div className="container mx-auto px-4 py-8">
-        <div className="max-w-4xl mx-auto space-y-6">
-          <div className="text-center space-y-2">
-            <h1 className="text-4xl font-bold text-balance">Aprende Lengua de Señas MX</h1>
-            <p className="text-muted-foreground">Selecciona un tema para comenzar tu lección</p>
-          </div>
+    // Changed from blue gradient to your theme background
+    <div className="min-h-screen bg-background text-foreground">
+      
+      <AppHeader
+        hearts={progress.hearts}
+        maxHearts={10}
+        streak={progress.currentStreak}
+        xp={progress.totalXp}
+      />
 
-          <QuickStatsBar hearts={progress.hearts} xp={progress.totalXp} streak={progress.currentStreak} />
-
-          <div className="space-y-4">
-            {topics.map((topic) => {
-              const topicProgress = progress.topicProgress[topic.id]
-              return (
-                <TopicCard
-                  key={topic.id}
-                  topic={topic}
-                  isUnlocked={topicProgress?.isUnlocked || false}
-                  completedLessons={topicProgress?.completedLessons || 0}
-                  totalLessons={topicProgress?.totalLessons || 1}
-                  onSelectLesson={handleSelectLesson}
-                />
-              )
-            })}
-          </div>
-        </div>
+      {/* The Scroll Carousel handles its own layout/pinning.
+         We pass the title and subtitle here so they stick while scrolling.
+      */}
+      <HorizontalScrollCarousel 
+        title="Aprende Lengua de Señas MX"
+        subtitle="Desliza hacia abajo para explorar los temas"
+      >
+        {topics.map((topic) => {
+          const topicProgress = progress.topicProgress[topic.id]
+          
+          return (
+            // We wrap the card in a div that ensures full height within the carousel slide
+            <div key={topic.id} className="h-full w-full">
+               <TopicCardHorizontal
+                topic={topic}
+                isUnlocked={topicProgress?.isUnlocked || false}
+                completedLessons={topicProgress?.completedLessons || 0}
+                totalLessons={topicProgress?.totalLessons || 1}
+                onSelectLesson={handleSelectLesson}
+              />
+            </div>
+          )
+        })}
+      </HorizontalScrollCarousel>
+      
+      {/* Optional: Add a footer or extra space below so scrolling feels natural at the end */}
+      <div className="h-20 flex items-center justify-center text-muted-foreground/50 text-sm">
+        Sigue aprendiendo para desbloquear más temas
       </div>
     </div>
   )
