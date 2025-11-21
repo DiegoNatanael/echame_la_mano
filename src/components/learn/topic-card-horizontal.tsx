@@ -136,7 +136,7 @@ export function TopicCardHorizontal({
 
             <Button
               variant="outline"
-              onClick={() => router.push(`/introduction/${topic.id}`)}
+              onClick={() => router.push(`/introduction/intro-${topic.id}`)}
               disabled={!isUnlocked}
               className="flex-1 h-14 font-bold text-slate-600 border-2 border-slate-200 hover:bg-slate-100 hover:text-slate-800 hover:border-slate-300 text-lg transition-colors"
             >
