@@ -32,4 +32,5 @@ export interface LessonAttempt {
   heartsLost: number
   completedAt: string
   mistakes: number
+  passed?: boolean
 }

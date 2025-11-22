@@ -2,26 +2,34 @@
 
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
-import { Trophy, Star, Heart } from "lucide-react"
+import { Trophy, Star, Heart, RotateCcw } from "lucide-react"
 
 interface LessonCompleteProps {
   xpEarned: number
   heartsRemaining: number
   accuracy: number
+  passed: boolean
   onContinue: () => void
 }
 
-export function LessonComplete({ xpEarned, heartsRemaining, accuracy, onContinue }: LessonCompleteProps) {
+export function LessonComplete({ xpEarned, heartsRemaining, accuracy, passed, onContinue }: LessonCompleteProps) {
   return (
     <div className="min-h-screen flex items-center justify-center p-4 bg-gradient-to-br from-yellow-50 to-orange-100">
       <Card className="w-full max-w-md">
         <CardHeader className="text-center">
           <div className="flex justify-center mb-4">
             <div className="rounded-full bg-yellow-100 p-6">
-              <Trophy className="h-16 w-16 text-yellow-600" />
+              <Trophy className={`h-16 w-16 ${passed ? 'text-yellow-600' : 'text-gray-500'}`} />
             </div>
           </div>
-          <CardTitle className="text-3xl font-bold">¡Lección Completada!</CardTitle>
+          <CardTitle className="text-3xl font-bold">
+            {passed ? '¡Lección Completada!' : 'Lección No Aprobada'}
+          </CardTitle>
+          <p className="text-muted-foreground">
+            {passed
+              ? '¡Buen trabajo! Has aprobado la lección.'
+              : `Necesitas al menos 70% de precisión para aprobar.`}
+          </p>
         </CardHeader>
         <CardContent className="space-y-4">
           <div className="grid grid-cols-3 gap-4 text-center">
@@ -41,16 +49,16 @@ export function LessonComplete({ xpEarned, heartsRemaining, accuracy, onContinue
             </div>
             <div className="space-y-2">
               <div className="flex justify-center">
-                <Trophy className="h-8 w-8 text-blue-500" />
+                <Trophy className={`h-8 w-8 ${accuracy >= 70 ? 'text-blue-500' : 'text-gray-500'}`} />
               </div>
-              <p className="text-2xl font-bold">{accuracy}%</p>
+              <p className={`text-2xl font-bold ${accuracy >= 70 ? 'text-blue-600' : 'text-gray-600'}`}>{accuracy}%</p>
               <p className="text-sm text-muted-foreground">Precisión</p>
             </div>
           </div>
         </CardContent>
         <CardFooter>
           <Button onClick={onContinue} size="lg" className="w-full">
-            Continuar
+            {passed ? 'Continuar' : 'Volver al Curso'}
           </Button>
         </CardFooter>
       </Card>
