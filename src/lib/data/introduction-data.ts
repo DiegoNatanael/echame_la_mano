@@ -144,7 +144,7 @@ export const topicIntroductionLessons: Record<string, IntroductionLesson> = {
         id: "greetings-intro-2",
         type: "video",
         title: "Saludos Básicos",
-        content: "https://www.youtube.com/embed/vrbUzX0A02I",
+        content: "https://www.youtube.com/embed/8oHcAEG2uKM",
         description:
           "Aprende las señas básicas de saludo como 'Hola', 'Buenos días', 'Buenas tardes', 'Adiós', etc.",
       },
