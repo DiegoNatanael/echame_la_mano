@@ -204,7 +204,7 @@ export const topicIntroductionLessons: Record<string, IntroductionLesson> = {
         id: "numbers-intro-1",
         type: "video",
         title: "Sistema Numérico en LSM",
-        content: "https://www.youtube.com/playlist?list=PLi8XpZVEKlLqqqR2-J4gxqxyP0KtahNPw",
+        content: "https://www.youtube.com/embed/5TCARa8YGAU",
         description:
           "Descubre cómo se representan los números en LSM, desde el 1 al 10, y cómo su movimiento indica cantidad o contexto.",
       },
@@ -212,7 +212,7 @@ export const topicIntroductionLessons: Record<string, IntroductionLesson> = {
         id: "numbers-intro-2",
         type: "video",
         title: "Números 1-20",
-        content: "https://www.youtube.com/playlist?list=PLi8XpZVEKlLqqqR2-J4gxqxyP0KtahNPw",
+        content: "https://www.youtube.com/embed/7jd2IxUhvkQ",
         description: "Aprende los números del 1 al 20 en LSM.",
       },
       {
