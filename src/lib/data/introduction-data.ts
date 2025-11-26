@@ -278,7 +278,7 @@ export const topicIntroductionLessons: Record<string, IntroductionLesson> = {
         id: "food-intro-2",
         type: "video",
         title: "Alimentos y Comida",
-        content: "https://www.youtube.com/embed/oW-fK5Ejn1w",
+        content: "https://youtu.be/mt0r52Uu3nU?si=B3XpAhXkXCRXUC6c",
         description: "Aprende las señas básicas para alimentos y bebidas comunes.",
       },
       {
@@ -311,7 +311,7 @@ export const topicIntroductionLessons: Record<string, IntroductionLesson> = {
         id: "animals-intro-2",
         type: "video",
         title: "Animales y Sonidos",
-        content: "https://www.youtube.com/embed/0XPEfoqRnXo",
+        content: "https://www.youtube.com/embed/_eqyxvmScxY",
         description: "Aprende cómo se representan diferentes animales y sus sonidos en LSM.",
       },
       {
