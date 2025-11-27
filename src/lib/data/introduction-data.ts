@@ -278,7 +278,7 @@ export const topicIntroductionLessons: Record<string, IntroductionLesson> = {
         id: "food-intro-2",
         type: "video",
         title: "Alimentos y Comida",
-        content: "https://youtu.be/mt0r52Uu3nU?si=B3XpAhXkXCRXUC6c",
+        content: "https://www.youtube.com/embed/mt0r52Uu3nU",
         description: "Aprende las señas básicas para alimentos y bebidas comunes.",
       },
       {
